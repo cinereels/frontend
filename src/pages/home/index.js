@@ -44,7 +44,7 @@ const Home = () => {
             borderRadius: "25px",
             height: "50px",
             width: "150px",
-            backgroundColor: "rgb(256, 0, 0, 0.5)",
+            backgroundColor: "rgb(256, 0, 0, 1)",
             flex: 1,
             flexDirection: "column",
             justifyContent: "center",
