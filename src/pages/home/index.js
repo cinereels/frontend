@@ -1,88 +1,20 @@
 import React from "react";
-import "../../Home.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { Container } from './styles';
+import ShowList from '../../components/show-list';
+import Theme from '../../components/theme';
 import { matches } from "./match";
 
 const Home = () => {
+  const bg =
+    "https://e0.365dm.com/21/05/2048x1152/skysports-manchester-united_5377138.jpg";
+  const description = `The Liverpool F.C.–Manchester United F.C. rivalry is a high-profile inter-city rivalry between English professional football clubs Liverpool and Manchester United. It is considered the biggest fixture in English football and one of the biggest rivalries in world football. Players, fans and the media consider the fixture between the two clubs to be their biggest rivalry, above even their own local derbies, with Everton and Manchester City respectively.`;
+
   return (
-    <>
-      <div
-        resizeMode={"contain"}
-        style={{
-          backgroundImage: `url("https://i2-prod.manchestereveningnews.co.uk/sport/football/article20512072.ece/ALTERNATES/s1200/2_munliv.png")`,
-          width: "100%",
-          height: "500px",
-          // marginLeft: "10%",
-          // marginRight: "10%",
-          marginTop: "20px",
-          // borderRadius: "20px",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          // padding: "30px",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            width: "100%",
-            height: "500px",
-          }}
-        >
-          <div
-            style={{
-              display: "cover",
-              padding: "10px",
-              width: "300px",
-              borderRadius: "30px",
-            }}
-            className="header"
-          >
-            <h1 style={{ color: "white" }}>Manchester United </h1>
-            <h1 style={{ color: "white" }}>vs</h1>
-            <h1 style={{ color: "white" }}>Liverpool</h1>
-            <p style={{ color: "white" }}>
-              Catch the live action between United and Liverpool from Anfield
-              live!
-            </p>
-          </div>
-          <button
-            style={{
-              margin: "10px",
-              borderRadius: "25px",
-              height: "50px",
-              width: "150px",
-              backgroundColor: "rgb(256, 0, 0, 1)",
-              flex: 1,
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              marginLeft: "80px",
-            }}
-          >
-            <h3 style={{ color: "white" }}>Watch Live</h3>
-          </button>
-        </div>
-        <FontAwesomeIcon icon="eye-evil" border size="lg" />
-      </div>
-      <div className="row">
-        <h4>Cricket</h4>
-        <div className="row_posters">
-          {matches.map((match) => (
-            <img className="row_poster" src={match.image} alt={match.name} />
-          ))}
-        </div>
-      </div>
-      <div className="row">
-        <h4>Cricket</h4>
-        <div className="row_posters">
-          {matches.map((match) => (
-            <img className="row_poster" src={match.image} alt={match.name} />
-          ))}
-        </div>
-      </div>
-    </>
+    <Container>
+      <Theme bg={bg} title={"Manchester United vs Liverpool"} description={description} />
+      <ShowList list={matches} legend={"Cricket"} />
+      <ShowList list={matches} legend={"Football"} />
+    </Container>
   );
 };
 

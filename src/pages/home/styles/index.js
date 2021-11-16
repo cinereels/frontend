@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-im
-export const Button = styled.button`
 
+export const Container = styled.div`
+    background-color: #000;
 `;
