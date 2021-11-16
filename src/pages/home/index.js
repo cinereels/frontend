@@ -42,8 +42,10 @@ const Home = () => {
             <h1 style={{ color: "white" }}>Manchester United </h1>
             <h1 style={{ color: "white" }}>vs</h1>
             <h1 style={{ color: "white" }}>Liverpool</h1>
-            Catch the live action between United and Liverpool from Anfield
-            live!
+            <p style={{ color: "white" }}>
+              Catch the live action between United and Liverpool from Anfield
+              live!
+            </p>
           </div>
           <button
             style={{
