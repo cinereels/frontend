@@ -26,36 +26,44 @@ const Home = () => {
         <div
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "cover",
-            padding: "10px",
-            width: "300px",
-            borderRadius: "30px",
+            width: "100%",
+            height: "500px",
           }}
-          className="header"
         >
-          <h1>Manchester United </h1>
-          <h1>vs</h1>
-          <h1>Liverpool</h1>
-          Catch the live action between United and Liverpool from Anfield live!
+          <div
+            style={{
+              display: "cover",
+              padding: "10px",
+              width: "300px",
+              borderRadius: "30px",
+            }}
+            className="header"
+          >
+            <h1 style={{ color: "white" }}>Manchester United </h1>
+            <h1 style={{ color: "white" }}>vs</h1>
+            <h1 style={{ color: "white" }}>Liverpool</h1>
+            Catch the live action between United and Liverpool from Anfield
+            live!
+          </div>
+          <button
+            style={{
+              margin: "10px",
+              borderRadius: "25px",
+              height: "50px",
+              width: "150px",
+              backgroundColor: "rgb(256, 0, 0, 1)",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: "80px",
+            }}
+          >
+            <h3 style={{ color: "white" }}>Watch Live</h3>
+          </button>
         </div>
-        <button
-          style={{
-            margin: "10px",
-            borderRadius: "25px",
-            height: "50px",
-            width: "150px",
-            backgroundColor: "rgb(256, 0, 0, 1)",
-            flex: 1,
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: "80px"
-          }}
-        >
-          <h3>Watch Live</h3>
-        </button>
-      </div>
         <FontAwesomeIcon icon="eye-evil" border size="lg" />
+      </div>
       <div className="row">
         <h4>Cricket</h4>
         <div className="row_posters">
