@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from './styles';
 import ShowList from '../../components/show-list';
 import Theme from '../../components/theme';
+import Nav from '../../Nav'
 import { matches } from "./match";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
 
   return (
     <Container>
+      <Nav />
       <Theme bg={bg} title={"Manchester United vs Liverpool"} description={description} />
       <ShowList list={matches} legend={"Cricket"} />
       <ShowList list={matches} legend={"Football"} />

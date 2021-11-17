@@ -1,8 +1,5 @@
 import styled from "styled-components/macro";
 
-// Btn naam h 
-// styles daal badiya se
-
 export const Btn = styled.button`
   width: ${({ width }) => (width ? width + "px" : "100%")};
   color: #fff;
