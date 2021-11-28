@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import "./styles/index.css";
 import useVideoPlayer from "../../hooks/useVideoPlayer";
-import video from "../../assets/video.mp4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const VideoComponent = () => {
@@ -22,7 +21,7 @@ const VideoComponent = () => {
     <div className="container">
       <div className="video-wrapper">
         <video
-          src={video}
+          src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
         />
