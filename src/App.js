@@ -18,6 +18,10 @@ import {
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import NotificationPage from "./pages/NotificationPage";
+import CustomThemeProvider from './containers/custom-theme-provider';
+import Layout from './containers/layout';
+import { BrowserRouter } from "react-router-dom";
+import Navigator from "./containers/navigator";
 
 library.add(
   fab,
@@ -35,13 +39,13 @@ library.add(
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#282828" }}>
-      {/* <MyNav /> */}
-      {/* <Home />a */}
-      {/* <VideoComponent /> */}
-      {/* <Guest /> */}
-      <NotificationPage />
-    </div>
+    <CustomThemeProvider>
+      <BrowserRouter>
+        <Layout>
+          <Navigator />
+        </Layout>
+      </BrowserRouter>
+    </CustomThemeProvider>
   );
 }
 
