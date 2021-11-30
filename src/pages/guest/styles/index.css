@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.outer-container {
+  background-image: url("../../../images/Background.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+p {
+  font-size: 50px;
+}
+
+p::first-letter {
+  color: red;
+}
+
+.btn {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 100px;
+  font-size: 20px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.btn-div {
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: 90%;
+}
+
+.btn1 {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 250px;
+  font-size: 20px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.btn-div1 {
+  margin-bottom: 100px;
+}

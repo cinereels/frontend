@@ -104,3 +104,14 @@ input[type="range"]::-moz-range-progress {
   color: red;
   font-size: 20px;
 }
+
+.full-screen {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.full-screen:hover {
+  transform: scale(1.3);
+}

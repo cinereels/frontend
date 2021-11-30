@@ -1,21 +1,26 @@
 import React from "react";
-import Home from "./pages/home";
 import "./App.css";
-import MyNav from "./components/navbar";
+import Guest from './pages/guest';
 import VideoComponent from "./pages/video";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faPause, faPlay, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPause,
+  faPlay,
+  faVolumeMute,
+  faVolumeUp,
+  faExpand
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, faPause, faPlay, faVolumeMute, faVolumeUp);
+library.add(fab, faPause, faPlay, faVolumeMute, faVolumeUp, faExpand);
 
 function App() {
   return (
     <>
       {/* <MyNav /> */}
       {/* <Home /> */}
-      <VideoComponent />
+      {/* <VideoComponent /> */}
+      <Guest />
     </>
   );
 }

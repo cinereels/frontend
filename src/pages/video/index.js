@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import "./styles/index.css";
 import useVideoPlayer from "../../hooks/useVideoPlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const VideoComponent = () => {
   const videoElement = useRef(null);
@@ -17,9 +18,22 @@ const VideoComponent = () => {
     handleVideoSpeed,
   } = useVideoPlayer(videoElement);
 
+  const handle = useFullScreenHandle();
+  const playerRef = useRef(0);
+
+  const toggleFullScreen = () => {
+    if (playerRef.current == 0) {
+      handle.enter();
+      playerRef.current = 1;
+    } else {
+      handle.exit();
+      playerRef.current = 0;
+    }
+  };
+
   return (
     <div className="container">
-      <div className="video-wrapper">
+      <FullScreen handle={handle} className="video-wrapper">
         <video
           src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
           ref={videoElement}
@@ -59,8 +73,11 @@ const VideoComponent = () => {
               <FontAwesomeIcon icon="volume-up" />
             )}
           </button>
+          <button className="full-screen" onClick={toggleFullScreen}>
+            <FontAwesomeIcon icon="expand" />
+          </button>
         </div>
-      </div>
+      </FullScreen>
     </div>
   );
 };
