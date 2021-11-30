@@ -9,18 +9,38 @@ import Notification from "../../components/Notification";
 
 const NotificationPage = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <div className="notification-container">
-        <div style={{fontSize: "larger"}}>Notifications</div>
+        <div style={{ fontSize: "larger", marginBottom: "30px" }}>
+          Notifications
+        </div>
         <Notification
           imageUrl={photo4}
           title="Squid Game Released"
           imdb="8.1"
           rt="94%"
         />
+        <Notification
+          imageUrl={photo1}
+          title="Money Heist Released"
+          imdb="8.1"
+          rt="94%"
+        />
+        <Notification
+          imageUrl={photo2}
+          title="Game of Thrones Released"
+          imdb="9.2"
+          rt="89%"
+        />
+        <Notification
+          imageUrl={photo3}
+          title="Dark Released"
+          imdb="8.8"
+          rt="95%"
+        />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -35,7 +35,7 @@ library.add(
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#282828" }}>
+    <div style={{ backgroundColor: "#282828", minHeight: "100vh", backgroundSize: 'cover' }}>
       {/* <MyNav /> */}
       {/* <Home />a */}
       {/* <VideoComponent /> */}
