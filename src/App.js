@@ -1,10 +1,7 @@
 import React from "react";
 import "./App.css";
-import Guest from "./pages/guest";
-import VideoComponent from "./pages/video";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import Home from "./pages/home";
 import {
   faPause,
   faPlay,
@@ -17,7 +14,6 @@ import {
   faCog,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
-import NotificationPage from "./pages/notification";
 import CustomThemeProvider from './containers/custom-theme-provider';
 import Layout from './containers/layout';
 import { BrowserRouter } from "react-router-dom";
