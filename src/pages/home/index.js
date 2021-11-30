@@ -7,13 +7,13 @@ import photo2 from "../../images/GOT.jpeg";
 import photo3 from "../../images/photo.jpeg";
 import photo4 from "../../images/squid.jpeg";
 
-const Home = () => {
+const HomePage = () => {
   const description = `Squid Game (Korean: 오징어 게임; RR: Ojing-eo Geim) is a South Korean survival drama streaming television series created by Hwang Dong-hyuk for Netflix. Its cast includes Lee Jung-jae, Park Hae-soo, Wi Ha-joon, Jung Ho-yeon, O Yeong-su, Heo Sung-tae, Anupam Tripathi, and Kim Joo-ryoung.`;
 
   return (
     <>
       <div className="container-home">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="side-home">
           <div className="title-home">Squid Game</div>
           <div className="description-home">{description}</div>
@@ -65,4 +65,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

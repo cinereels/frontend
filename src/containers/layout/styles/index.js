@@ -10,4 +10,6 @@ export const Header = styled.div`
 
 export const Footer = styled.div``;
 
-export const Main = styled.div``;
+export const Main = styled.div`
+    background-color: ${ ({ theme }) => theme.background }
+`;
