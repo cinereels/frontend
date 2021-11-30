@@ -15,9 +15,9 @@
   align-items: center;
 }
 
-p {
+/* p {
   font-size: 50px;
-}
+} */
 
 p::first-letter {
   color: red;

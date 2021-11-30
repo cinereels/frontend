@@ -11,7 +11,7 @@ const Guest = () => {
       <div className="btn-div">
         <button className="btn">Login</button>
       </div>
-      <p>CINEREELS</p>
+      <p style={{ fontSize: "50px" }}>CINEREELS</p>
       <div className="container">
         <Card imageUrl={bg1} title="Live Action" />
         <div style={{ marginBottom: "100px" }}>

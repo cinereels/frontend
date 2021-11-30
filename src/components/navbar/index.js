@@ -1,18 +1,20 @@
 import React from "react";
-import { Container, Input } from "./styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./styles/index.css";
 
 const MyNav = () => {
   return (
-    <Container>
-      <p>Outreach</p>
-      <Input />
-      <p>News</p>
-      <p>Travel</p>
-      <p>Music</p>
-      <p>Sports</p>
-      <p>Documentaries</p>
-      <p>Dashboard</p>
-    </Container>
+    <div className="navbar">
+      <p style={{ fontSize: "35px", marginTop: '15px' }}>CINEREELS</p>
+      <div className="options">
+        <FontAwesomeIcon icon="home" size="lg" color="red" />
+        <FontAwesomeIcon icon="search" size="lg" />
+        <FontAwesomeIcon icon="film" size="lg" />
+        <FontAwesomeIcon icon="bell" size="lg" />
+        <FontAwesomeIcon icon="cog" size="lg" />
+        <button className="btn-navbar">M</button>
+      </div>
+    </div>
   );
 };
 
