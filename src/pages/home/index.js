@@ -13,18 +13,21 @@ const Home = () => {
   return (
     <>
       <div className="container-home">
-        <Navbar />
-        <div className="side-home">
-          <div className="title-home">Squid Game</div>
-          <div className="description-home">{description}</div>
-        </div>
-        <div className="rating-home">
-          <div className="imdb">IMDB - 8.1</div>
-          <div className="rt">ROTTEN TOMATOES - 94%</div>
-        </div>
-        <div className="btns">
-          <button className="btn-play">Play</button>
-          <button className="btn-visit">Visit</button>
+        <div className="container-overlay">
+          <div className="side-home">
+            <div className="title-home">Squid Game</div>
+            <p className="description-home">
+              {description}
+            </p>
+          </div>
+          <div className="rating-home">
+            <div className="imdb">IMDB - 8.1</div>
+            <div className="rt">ROTTEN TOMATOES - 94%</div>
+          </div>
+          <div className="btns">
+            <button className="btn-play">Play</button>
+            <button className="btn-visit">Visit</button>
+          </div>
         </div>
       </div>
       <div className="recent-activity">

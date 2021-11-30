@@ -19,10 +19,6 @@
   font-size: 50px;
 } */
 
-p::first-letter {
-  color: red;
-}
-
 .btn {
   background-color: red;
   color: white;

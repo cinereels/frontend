@@ -1,11 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles/index.css";
+import Brand from "../brand";
 
 const MyNav = () => {
   return (
     <div className="navbar">
-      <p style={{ fontSize: "35px", marginTop: '15px' }}>CINEREELS</p>
+      <div style={{ width: 30 }} />
+      <Brand />
+      <div style={{ flex: 1 }} />
       <div className="options">
         <FontAwesomeIcon icon="home" size="lg" color="red" />
         <FontAwesomeIcon icon="search" size="lg" />

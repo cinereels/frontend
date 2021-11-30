@@ -17,7 +17,7 @@ import {
   faCog,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
-import NotificationPage from "./pages/NotificationPage";
+import NotificationPage from "./pages/notification";
 import CustomThemeProvider from './containers/custom-theme-provider';
 import Layout from './containers/layout';
 import { BrowserRouter } from "react-router-dom";

@@ -3,6 +3,7 @@ const theme = {
     blue: '#1894FF',
     black: '#000000',
     white: '#FFFFFF',
+    background: '#282828',
 };
 
 export default theme;

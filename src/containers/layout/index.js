@@ -6,7 +6,7 @@ import Navbar from '../../components/navbar';
 const Layout = ({ children }) => {
     const location = useLocation();
 
-    if (location.pathname === '/auth') {
+    if (location.pathname === '/auth' || location.pathname === '/guest') {
         return (
             <Container>
                 <Main>
