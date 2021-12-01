@@ -1,10 +1,9 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles/index.css";
 import Brand from "../brand";
-import { BiHomeAlt, BiSearch, BiFilm, BiBell, BiCog } from 'react-icons/bi';
+import { BiHomeAlt, BiVideo, BiSearch, BiFilm, BiBell, BiCog } from 'react-icons/bi';
 import theme from "../../styles/theme";
-import { Router, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Spacer from "../spacer";
 
 const MyNav = () => {
@@ -26,6 +25,9 @@ const MyNav = () => {
         <div className="options">
           <NavLink to='/'>
             <BiHomeAlt color={location.pathname === '/' ? activeIconColor : iconColor} size={iconSize} />
+          </NavLink>
+          <NavLink to='/player'>
+            <BiVideo color={location.pathname === '/player' ? activeIconColor : iconColor} size={iconSize} />
           </NavLink>
           <NavLink to='/search'>
             <BiSearch color={location.pathname === '/search' ? activeIconColor : iconColor} size={iconSize} />
