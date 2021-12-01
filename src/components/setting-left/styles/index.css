@@ -1,0 +1,14 @@
+.setting-left-container {
+    background-color: black;
+    color: white;
+    height: 90vh;
+    width: 30%;
+    margin-top: 70px;
+    position: fixed;
+    padding-top: 50px;
+    /* padding-bottom: 50px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}

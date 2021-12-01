@@ -1,14 +1,15 @@
 import React from "react";
-import { Container } from './styles';
-import { Switch } from 'react-router-dom';
-import { AuthRoute, GuestRoute } from '../../guards';
-import AuthPage from '../../pages/auth';
-import HomePage from '../../pages/home';
-import GuestPage from '../../pages/guest';
+import { Container } from "./styles";
+import { Switch } from "react-router-dom";
+import { AuthRoute, GuestRoute } from "../../guards";
+import AuthPage from "../../pages/auth";
+import HomePage from "../../pages/home";
+import GuestPage from "../../pages/guest";
 import NotificationPage from "../../pages/notification";
 import SearchPage from "../../pages/search";
 import TopChartPage from "../../pages/top-chart";
 import LogoutPage from "../../pages/logout";
+import SettingPage from "../../pages/setting";
 
 const Navigator = () => {
     return (
@@ -28,6 +29,9 @@ const Navigator = () => {
                 </AuthRoute>
                 <AuthRoute path={'/top-charts'}>
                     <TopChartPage />
+                </AuthRoute>
+                <AuthRoute path={'/settings'}>
+                    <SettingPage />
                 </AuthRoute>
                 <AuthRoute path={'/logout'}>
                     <LogoutPage />
