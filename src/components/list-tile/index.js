@@ -1,12 +1,12 @@
 import React from "react";
 import "./styles/index.css";
 
-const Notification = ({ title, imageUrl, imdb, rt }) => {
+const ListTile = ({ title, imageUrl, imdb, rt }) => {
   return (
-    <div className="notification-component">
-      <img src={imageUrl} alt={title} className="notification-image" />
+    <div className="list-tile-component">
+      <img src={imageUrl} alt={title} className="list-tile-image" />
       <div className="rating-content">
-        <p className="notification-title">
+        <p className="list-tile-title">
           {title}
         </p>
         <div className="ratings">
@@ -18,4 +18,4 @@ const Notification = ({ title, imageUrl, imdb, rt }) => {
   );
 };
 
-export default Notification;
+export default ListTile;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Footer, Header, Main } from './styles';
+import { Container, Main } from './styles';
 import Navbar from '../../components/navbar';
+import Footer from '../../components/footer';
 
 const Layout = ({ children }) => {
     const location = useLocation();
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
             <Main>
                 {children}
             </Main>
+            <Footer />
         </Container>
     );
 }

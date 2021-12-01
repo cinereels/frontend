@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-    padding: 20px;
+    /* padding: 20px; */
 `;
 
 export const Row = styled.div`

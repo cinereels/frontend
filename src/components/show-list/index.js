@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Legend } from "./styles";
 import ShowCard from '../show-card';
+import ShowCircle from "../show-circle";
 
-const ShowList = ({ list, legend }) => {
+const ShowList = ({ list, legend, type = 'card' }) => {
     return (
         <Container>
             <Legend>
@@ -10,7 +11,16 @@ const ShowList = ({ list, legend }) => {
             </Legend>
             <Row>
                 {
-                    list.map(listItem => <ShowCard name={listItem.name} image={listItem.image} />)
+                    list.map(listItem =>
+                        type === 'card' ?
+                            <ShowCard
+                                key={listItem.id}
+                                name={listItem.name}
+                                image={listItem.image}
+                            />
+                            :
+                            <ShowCircle key={listItem.id} image={listItem.image} />
+                        )
                 }
             </Row>
         </Container>

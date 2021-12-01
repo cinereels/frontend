@@ -1,8 +1,7 @@
-.notification-component {
+.list-tile-component {
   width: 100%;
   height: 100px;
   background-color: #7a7c80;
-  margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
   padding-left: 20px;
@@ -11,18 +10,20 @@
   border-radius: 5px;
 }
 
-.notification-image {
+.list-tile-image {
   border-radius: 5px;
 }
 
-.notification-title {
+.list-tile-title {
   font-size: 18px;
+  color: #fff;
 }
 
 .ratings {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #fff;
 }
 
 .rating-content {

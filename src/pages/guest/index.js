@@ -4,6 +4,8 @@ import "./styles/index.css";
 import bg1 from "../../images/Football.jpeg";
 import bg2 from "../../images/GOT.jpeg";
 import bg3 from "../../images/TV.jpeg";
+import Brand from "../../components/brand";
+import Spacer from "../../components/spacer";
 
 const Guest = () => {
   return (
@@ -11,7 +13,8 @@ const Guest = () => {
       <div className="btn-div">
         <button className="btn">Login</button>
       </div>
-      <p style={{ fontSize: "50px" }}>CINEREELS</p>
+      <Spacer type={'vertical'} size={50} />
+      <Brand size={50} />
       <div className="container">
         <Card imageUrl={bg1} title="Live Action" />
         <div style={{ marginBottom: "100px" }}>

@@ -6,6 +6,8 @@ import AuthPage from '../../pages/auth';
 import HomePage from '../../pages/home';
 import GuestPage from '../../pages/guest';
 import NotificationPage from "../../pages/notification";
+import SearchPage from "../../pages/search";
+import TopChartPage from "../../pages/top-chart";
 
 const Navigator = () => {
     return (
@@ -19,6 +21,12 @@ const Navigator = () => {
                 </GuestRoute>
                 <AuthRoute path={'/notifications'}>
                     <NotificationPage />
+                </AuthRoute>
+                <AuthRoute path={'/search'}>
+                    <SearchPage />
+                </AuthRoute>
+                <AuthRoute path={'/top-charts'}>
+                    <TopChartPage />
                 </AuthRoute>
                 <AuthRoute path={'/'}>
                     <HomePage />
