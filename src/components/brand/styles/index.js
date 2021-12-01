@@ -7,9 +7,12 @@ export const Text = styled.h1`
     color: #fff;
     text-transform: uppercase;
     margin: 0;
+    text-decoration: none;
+    text-decoration-line: none;
+    font-weight: 400;
     
     &:first-letter {
         color: ${ ({ theme }) => theme.primary };
-        font-size: ${ ({ size = 28 }) => (size + 10) + 'px' };
+        font-size: ${ ({ size = 28 }) => (size + 5) + 'px' };
     }
 `;
