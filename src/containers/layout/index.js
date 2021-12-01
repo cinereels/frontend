@@ -7,7 +7,7 @@ import Footer from '../../components/footer';
 const Layout = ({ children }) => {
     const location = useLocation();
 
-    if (location.pathname === '/auth' || location.pathname === '/guest') {
+    if (location.pathname === '/auth' || location.pathname === '/guest' || location.pathname === '/logout') {
         return (
             <Container>
                 <Main>
