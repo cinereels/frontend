@@ -1,26 +1,18 @@
 .setting-right-container {
-    margin-top: 70px;
-    margin-left: 30%;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  margin-top: 70px;
+  margin-left: 30%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-done {
-    width: 65%;
-    height: 70px;
-    background-color: red;
-    border: none;
-    color: white;
-    font-size: larger;
-    border-radius: 5px;
-    margin: auto;
-    margin-top: 60px;
-}
-
-.btn-done:hover {
-    background-color: white;
-    color: red;
+  margin-left: 42%;
+  position: fixed;
+  width: 46%;
+  height: 50px;
+  margin-top: 570px;
 }

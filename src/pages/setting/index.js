@@ -4,7 +4,7 @@ import SettingLeft from "../../components/setting-left";
 import SettingRight from "../../components/setting-right";
 
 const SettingPage = () => {
-  const [settingValue, setSettingValue] = useState("1");
+  const [settingValue, setSettingValue] = useState("2");
 
   return (
     <div className="setting-outer-container">

@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import Slider, { Range } from "rc-slider";
+import "./styles/index.css";
+import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 const SettingVolume = () => {
-  const [volume, setVolume] = useState(50);
+  const [volume, setVolume] = useState(3);
   return (
     <div className="setting-volume">
+      <p>Sound</p>
       <Slider
         min={0}
-        max={100}
+        max={5}
         value={volume}
         onChange={setVolume}
         railStyle={{
-          height: 5,
+          height: 1,
         }}
         handleStyle={{
           height: 28,
           width: 28,
-        //   marginLeft: -14,
-        //   marginTop: -14,
+            marginLeft: -14,
+            marginTop: -14,
           backgroundColor: "red",
           border: 0,
         }}
         trackStyle={{
-          background: "none",
+          height: 1,
+          backgroundColor: 'red',
+          color: "red"
         }}
       />
+      <p>Level - {volume}</p>
     </div>
   );
 };
