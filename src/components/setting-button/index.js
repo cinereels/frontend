@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
+import "./styles/index.css";
 
-const SettingButton = ({title, value}) => {
-    return <div className="setting-button-container">{title}</div>;
-}
+const SettingButton = ({ title, value }) => {
+  return (
+    <button className="setting-button-container">
+      <p>{title}</p>
+      <p style={{ color: "red" }}>{value}</p>
+    </button>
+  );
+};
 
-export default SettingButton
+export default SettingButton;

@@ -1,11 +1,13 @@
 import React from "react";
-import SettingLeft from "../../components/setting-left";
 import "./styles/index.css";
+import SettingLeft from "../../components/setting-left";
+import SettingRight from "../../components/setting-right";
 
 const SettingPage = () => {
   return (
-    <div>
+    <div className="setting-outer-container">
       <SettingLeft />
+      <SettingRight />
     </div>
   );
 };

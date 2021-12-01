@@ -1,0 +1,4 @@
+.setting-outer-container {
+    display: flex;
+    flex-direction: row;
+}

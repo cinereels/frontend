@@ -1,0 +1,16 @@
+.language-container {
+  width: 65%;
+  height: 50px;
+  color: white;
+  border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.language-container:hover {
+  color: aqua;
+  border-bottom: 1px solid aqua;
+}
