@@ -34,5 +34,6 @@ export const SearchResults = styled.div`
     padding-top: 20px;
     display: flexbox;
     flex-wrap: wrap;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 `;

@@ -9,6 +9,7 @@ import NotificationPage from "../../pages/notification";
 import SearchPage from "../../pages/search";
 import TopChartPage from "../../pages/top-chart";
 import LogoutPage from "../../pages/logout";
+import LobbyPage from "../../pages/lobby";
 
 const Navigator = () => {
     return (
@@ -28,6 +29,9 @@ const Navigator = () => {
                 </AuthRoute>
                 <AuthRoute path={'/top-charts'}>
                     <TopChartPage />
+                </AuthRoute>
+                <AuthRoute path={'/lobby'}>
+                    <LobbyPage />
                 </AuthRoute>
                 <AuthRoute path={'/logout'}>
                     <LogoutPage />

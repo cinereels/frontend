@@ -9,9 +9,17 @@ import photo1 from "../../images/mh.jpeg";
 import photo2 from "../../images/GOT.jpeg";
 import photo3 from "../../images/photo.jpeg";
 import photo4 from "../../images/squid.jpeg";
+import Theme from "../../components/theme";
 
 const Home = () => {
-  const description = `Squid Game (Korean: 오징어 게임; RR: Ojing-eo Geim) is a South Korean survival drama streaming television series created by Hwang Dong-hyuk for Netflix. Its cast includes Lee Jung-jae, Park Hae-soo, Wi Ha-joon, Jung Ho-yeon, O Yeong-su, Heo Sung-tae, Anupam Tripathi, and Kim Joo-ryoung.`;
+  const theme = {
+    title: 'Squid Game',
+    image: photo4,
+    description: `Squid Game (Korean: 오징어 게임; RR: Ojing-eo Geim) is a South Korean survival drama streaming television series created by Hwang Dong-hyuk for Netflix. Its cast includes Lee Jung-jae, Park Hae-soo, Wi Ha-joon, Jung Ho-yeon, O Yeong-su, Heo Sung-tae, Anupam Tripathi, and Kim Joo-ryoung.`,
+    imdb: '8.1',
+    rt: '94%',
+  };
+
 
   const recentActivity = [
     {
@@ -66,24 +74,14 @@ const Home = () => {
 
   return (
     <>
-      <div className="container-home">
-        <div className="container-overlay">
-          <div className="side-home">
-            <div className="title-home">Squid Game</div>
-            <p className="description-home">
-              {description}
-            </p>
-          </div>
-          <div className="rating-home">
-            <div className="imdb">IMDB - 8.1</div>
-            <div className="rt">ROTTEN TOMATOES - 94%</div>
-          </div>
-          <div className="btns">
-            <button className="btn-play">Play</button>
-            <button className="btn-visit">Visit</button>
-          </div>
-        </div>
-      </div>
+      <Theme
+        title={theme.title}
+        description={theme.description}
+        image={theme.image}
+        imdb={theme.imdb}
+        rt={theme.rt}
+        type={'home'}
+      />
       <div className="recent-activity">
         <ShowList legend={'Your Recent Activity'} list={recentActivity} type={'circle'} />
       </div>
