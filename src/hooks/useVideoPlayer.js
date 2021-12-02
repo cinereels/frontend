@@ -20,8 +20,7 @@ const useVideoPlayer = (videoElement) => {
     setProgress(newProgress);
   };
 
-  const handleVideoProgress = (event) => {
-    const manualChange = Number(event.target.value);
+  const handleVideoProgress = (manualChange) => {
     videoElement.current.currentTime =
       (videoElement.current.duration / 100) * manualChange;
     setProgress(manualChange);
@@ -36,12 +35,26 @@ const useVideoPlayer = (videoElement) => {
   const toggleMute = () => {
     setIsMuted(!isMuted);
   };
-
   useEffect(() => {
     isMuted
       ? (videoElement.current.muted = true)
       : (videoElement.current.muted = false);
   }, [isMuted, videoElement]);
+  const skipForward = () => {
+    if (videoElement.current.currentTime + 10 <= videoElement.current.duration) {
+      videoElement.current.currentTime += 10;
+    } else {
+      videoElement.current.currentTime = videoElement.current.duration;
+    }
+  };
+
+  const skipBackward = () => {
+    if (videoElement.current.currentTime - 10 >= 0) {
+      videoElement.current.currentTime -= 10;
+    } else {
+      videoElement.current.currentTime = 0;
+    }
+  };
 
   return {
     isPlaying,
@@ -53,6 +66,8 @@ const useVideoPlayer = (videoElement) => {
     handleOnTimeUpdate,
     handleVideoProgress,
     handleVideoSpeed,
+    skipForward,
+    skipBackward
   };
 };
 

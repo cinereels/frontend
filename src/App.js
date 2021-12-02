@@ -13,9 +13,13 @@ import {
   faBell,
   faCog,
   faHome,
+  faClosedCaptioning,
+  faCompress,
+  faBackward,
+  faForward
 } from "@fortawesome/free-solid-svg-icons";
-import CustomThemeProvider from './containers/custom-theme-provider';
-import Layout from './containers/layout';
+import CustomThemeProvider from "./containers/custom-theme-provider";
+import Layout from "./containers/layout";
 import { BrowserRouter } from "react-router-dom";
 import Navigator from "./containers/navigator";
 
@@ -30,7 +34,11 @@ library.add(
   faFilm,
   faHome,
   faBell,
-  faCog
+  faCog,
+  faClosedCaptioning,
+  faCompress,
+  faBackward,
+  faForward
 );
 
 function App() {
