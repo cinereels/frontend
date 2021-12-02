@@ -10,7 +10,6 @@ const Layout = ({ children }) => {
   if (
     location.pathname === "/auth" ||
     location.pathname === "/guest" ||
-    location.pathname === "/player" ||
     location.pathname === "/logout"
   ) {
     return (

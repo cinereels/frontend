@@ -11,7 +11,8 @@ import TopChartPage from "../../pages/top-chart";
 import LogoutPage from "../../pages/logout";
 import LobbyPage from "../../pages/lobby";
 import SettingPage from "../../pages/setting";
-import VideoComponent from "../../pages/video";
+import PlayerPage from "../../pages/player";
+import ShowPage from "../../pages/show";
 
 const Navigator = () => {
     return (
@@ -38,8 +39,11 @@ const Navigator = () => {
                 <AuthRoute path={'/settings'}>
                     <SettingPage />
                 </AuthRoute>
+                <AuthRoute path={'/show'}>
+                    <ShowPage />
+                </AuthRoute>
                 <AuthRoute path={'/player'}>
-                    <VideoComponent />
+                    <PlayerPage />
                 </AuthRoute>
                 <AuthRoute path={'/logout'}>
                     <LogoutPage />
