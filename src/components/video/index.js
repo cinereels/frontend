@@ -6,7 +6,7 @@ import useVideoPlayer from "../../hooks/useVideoPlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-const VideoComponent = () => {
+const VideoComponent = ({ title, videoUrl }) => {
   const videoElement = useRef({
     currentTime: 0,
     duration: 0,
@@ -31,7 +31,7 @@ const VideoComponent = () => {
   const playerRef = useRef(0);
 
   const toggleFullScreen = () => {
-    if (playerRef.current == 0) {
+    if (playerRef.current === 0) {
       handle.enter();
       playerRef.current = 1;
     } else {
@@ -40,15 +40,20 @@ const VideoComponent = () => {
     }
   };
 
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(false);
 
   const setMouseMove = (e) => {
     e.preventDefault();
+    if (display === true) {
+      return;
+    }
+
     setDisplay(true);
+
     let timeout;
     (() => {
       clearTimeout(timeout);
-      timeout = setTimeout(() => setDisplay(false), 3000);
+      timeout = setTimeout(() => setDisplay(false), 5000);
     })();
   };
 
@@ -56,25 +61,33 @@ const VideoComponent = () => {
     visibility: display ? "visible" : "hidden",
   };
 
+  const fontStyleCustom = {
+    fontSize: handle.active ? "40px" : "20px",
+    color: 'red'
+  }
+
   return (
     <div
       className="container-video"
       onMouseMove={setMouseMove}
       style={{ color: "white" }}
       onDoubleClick={toggleFullScreen}
-        onKeyPress={(e) => {if(e.key === 'f') {
+      onKeyPress={(e) => {
+        if (e.key === "f") {
           toggleFullScreen();
-        }}}
+        }
+      }}
     >
       <FullScreen handle={handle} className="video-wrapper">
         <video
-          title="match"
-          src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+          // title="match"
+          src={videoUrl}
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
         />
         <div className="controls" style={scrollButtonStyle}>
           <div className="btn-grp">
+            <div className="video-title" style={fontStyleCustom}>{title}</div>
             <button className="full-screen">
               <FontAwesomeIcon
                 icon="closed-captioning"
@@ -210,7 +223,6 @@ const VideoComponent = () => {
             </select>
           */}
         </div>
-        {console.log(videoElement.current.currentTime)}
       </FullScreen>
     </div>
   );
