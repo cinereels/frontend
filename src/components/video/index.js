@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./styles/index.css";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -10,6 +10,8 @@ const VideoComponent = () => {
   const videoElement = useRef({
     currentTime: 0,
     duration: 0,
+    play: () => {},
+    pause: () => {},
   });
   const {
     isPlaying,
@@ -38,51 +40,82 @@ const VideoComponent = () => {
     }
   };
 
+  const [display, setDisplay] = useState(true);
+
+  const setMouseMove = (e) => {
+    e.preventDefault();
+    setDisplay(true);
+    let timeout;
+    (() => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => setDisplay(false), 3000);
+    })();
+  };
+
+  const scrollButtonStyle = {
+    visibility: display ? "visible" : "hidden",
+  };
+
   return (
-    <div className="container">
+    <div
+      className="container-video"
+      onMouseMove={setMouseMove}
+      style={{ color: "white" }}
+      onDoubleClick={toggleFullScreen}
+        onKeyPress={(e) => {if(e.key === 'f') {
+          toggleFullScreen();
+        }}}
+    >
       <FullScreen handle={handle} className="video-wrapper">
         <video
+          title="match"
           src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
         />
-        <div className="controls">
+        <div className="controls" style={scrollButtonStyle}>
           <div className="btn-grp">
             <button className="full-screen">
               <FontAwesomeIcon
                 icon="closed-captioning"
-                size={playerRef.current === 0 ? "1x" : "2x"}
+                size={handle.active === false ? "1x" : "2x"}
+                color="white"
               />
             </button>
             <button className="full-screen">
               <FontAwesomeIcon
                 icon="cog"
-                size={playerRef.current === 0 ? "1x" : "2x"}
+                size={handle.active === false ? "1x" : "2x"}
+                color="white"
               />
             </button>
             <button className="full-screen" onClick={toggleMute}>
               {!isMuted ? (
                 <FontAwesomeIcon
                   icon="volume-mute"
-                  size={playerRef.current === 0 ? "1x" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
+                  color="white"
                 />
               ) : (
                 <FontAwesomeIcon
                   icon="volume-up"
-                  size={playerRef.current === 0 ? "1x" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
+                  color="white"
                 />
               )}
             </button>
             <button className="full-screen" onClick={toggleFullScreen}>
-              {playerRef.current === 0 ? (
+              {handle.active === false ? (
                 <FontAwesomeIcon
                   icon="expand"
-                  size={playerRef.current === 0 ? "1x" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
+                  color="white"
                 />
               ) : (
                 <FontAwesomeIcon
                   icon="compress"
-                  size={playerRef.current === 0 ? "1x" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
+                  color="white"
                 />
               )}
             </button>
@@ -92,8 +125,8 @@ const VideoComponent = () => {
               <button onClick={skipBackward}>
                 <FontAwesomeIcon
                   icon="backward"
-                  size={playerRef.current === 0 ? "2x" : "4x"}
-                  color="rgba(0, 0, 0, 0.6)"
+                  size={handle.active === false ? "2x" : "4x"}
+                  color="rgba(255, 255, 255, 0.6)"
                 />
               </button>
             </div>
@@ -102,14 +135,16 @@ const VideoComponent = () => {
                 {!isPlaying ? (
                   <FontAwesomeIcon
                     icon="play"
-                    size={playerRef.current === 0 ? "3x" : "6x"}
+                    size={handle.active === false ? "3x" : "6x"}
                     // color="rgba(0, 0, 0, 0.5)"
+                    color="white"
                   />
                 ) : (
                   <FontAwesomeIcon
                     icon="pause"
-                    size={playerRef.current === 0 ? "3x" : "6x"}
+                    size={handle.active === false ? "3x" : "6x"}
                     // color="rgba(0, 0, 0, 0.5)"
+                    color="white"
                   />
                 )}
               </button>
@@ -118,8 +153,8 @@ const VideoComponent = () => {
               <button onClick={skipForward}>
                 <FontAwesomeIcon
                   icon="forward"
-                  size={playerRef.current === 0 ? "2x" : "4x"}
-                  color="rgba(0, 0, 0, 0.6)"
+                  size={handle.active === false ? "2x" : "4x"}
+                  color="rgba(255, 255, 255, 0.6)"
                 />
               </button>
             </div>
@@ -127,7 +162,7 @@ const VideoComponent = () => {
           <div
             style={{
               marginBottom: "0%",
-              width: playerRef.current === 0 ? "600px" : "1200px",
+              width: handle.active === false ? "600px" : "1200px",
             }}
           >
             <Slider

@@ -2,11 +2,12 @@ abody {
   background: transparent;
 }
 
-.container {
+.container-video {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: white;
 }
 
 h1 {
