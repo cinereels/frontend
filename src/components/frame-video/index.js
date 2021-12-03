@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useImperativeHandle, forwardRef } from "react";
 import "./styles/index.css";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -6,7 +6,7 @@ import useVideoPlayer from "../../hooks/useVideoPlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-const VideoComponent = ({ title, videoUrl }) => {
+const FrameComponent = ({ title, videoUrl }) => {
   const videoElement = useRef({
     currentTime: 0,
     duration: 0,
@@ -63,14 +63,23 @@ const VideoComponent = ({ title, videoUrl }) => {
 
   const fontStyleCustom = {
     fontSize: handle.active ? "40px" : "20px",
-    color: 'red'
-  }
+    color: "red",
+  };
+
+  const Iframe = forwardRef((props, ref) => {
+    useImperativeHandle(ref, () => ({
+      play: () => {},
+      pause: () => {},
+    }));
+    return <iframe title="Cricket Match" {...props} ref={ref} />;
+  });
 
   return (
     <div
+    
       className="container-video"
       onMouseMove={setMouseMove}
-      style={{ color: "white" }}
+      style={{ color: "white", width: "800px", height: "600px" }}
       onDoubleClick={toggleFullScreen}
       onKeyPress={(e) => {
         if (e.key === "f") {
@@ -79,26 +88,30 @@ const VideoComponent = ({ title, videoUrl }) => {
       }}
     >
       <FullScreen handle={handle} className="video-wrapper">
-        <video
-          // title="match"
+        <Iframe
+        width="800px"
+        height="600px"
+          title="match"
           src={videoUrl}
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
-        />
+        >
         <div className="controls" style={scrollButtonStyle}>
           <div className="btn-grp">
-            <div className="video-title" style={fontStyleCustom}>{title}</div>
+            <div className="video-title" style={fontStyleCustom}>
+              {title}
+            </div>
             <button className="full-screen">
               <FontAwesomeIcon
                 icon="closed-captioning"
-                size={handle.active === false ? "lg" : "2x"}
+                size={handle.active === false ? "1x" : "2x"}
                 color="white"
               />
             </button>
             <button className="full-screen">
               <FontAwesomeIcon
                 icon="cog"
-                size={handle.active === false ? "lg" : "2x"}
+                size={handle.active === false ? "1x" : "2x"}
                 color="white"
               />
             </button>
@@ -106,13 +119,13 @@ const VideoComponent = ({ title, videoUrl }) => {
               {!isMuted ? (
                 <FontAwesomeIcon
                   icon="volume-mute"
-                  size={handle.active === false ? "lg" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
                   color="white"
                 />
               ) : (
                 <FontAwesomeIcon
                   icon="volume-up"
-                  size={handle.active === false ? "lg" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
                   color="white"
                 />
               )}
@@ -121,13 +134,13 @@ const VideoComponent = ({ title, videoUrl }) => {
               {handle.active === false ? (
                 <FontAwesomeIcon
                   icon="expand"
-                  size={handle.active === false ? "lg" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
                   color="white"
                 />
               ) : (
                 <FontAwesomeIcon
                   icon="compress"
-                  size={handle.active === false ? "lg" : "2x"}
+                  size={handle.active === false ? "1x" : "2x"}
                   color="white"
                 />
               )}
@@ -217,15 +230,16 @@ const VideoComponent = ({ title, videoUrl }) => {
             onChange={(e) => handleVideoSpeed(e)}
             >
             <option value="0.50">0.50x</option>
-            <option value="1">lg</option>
+            <option value="1">1x</option>
             <option value="1.25">1.25x</option>
             <option value="2">2x</option>
             </select>
           */}
         </div>
+        </Iframe>
       </FullScreen>
     </div>
   );
 };
 
-export default VideoComponent;
+export default FrameComponent;
