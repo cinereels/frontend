@@ -6,7 +6,7 @@ abody {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   color: white;
 }
 
@@ -15,22 +15,33 @@ h1 {
 }
 
 video {
+  /* height: 100%; */
   width: 100%;
+  object-fit: contain;
+}
+
+iframe {
+  /* height: 100%; */
+  width: 100%;
+  object-fit: contain;
 }
 
 .video-wrapper {
   z-index: 300;
   width: 100%;
-  max-width: 700px;
+  min-height: 400px;
+  /* max-width: 700px; */
   position: relative;
   display: flex;
   justify-content: center;
   overflow: hidden;
   border-radius: 10px;
+  /* border: 1px solid #fff; */
 }
 
 .video-wrapper:hover .controls {
-  transform: translateY(0%);
+  /* transform: translateY(0%); */
+  opacity: 1;
 }
 
 .controls {

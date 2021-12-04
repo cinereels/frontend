@@ -5,6 +5,7 @@ import { Container, Wrapper, ShowSection, EpisodeSection, VideoContainer, Info, 
 import photo4 from "../../images/squid.jpeg";
 import EpisodeList from '../../components/episode-list';
 import { Select } from '../../UI';
+import VideoComponent from '../../components/video';
 
 const ShowPage = () => {
     const [episodeIndex, setEpisodeIndex] = useState(0);
@@ -85,7 +86,9 @@ const ShowPage = () => {
         <Container>
             <Wrapper>
                 <ShowSection>
-                    <VideoContainer />
+                    <VideoContainer>
+                        <VideoComponent title={'Sintle'} videoUrl={'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'}  />
+                    </VideoContainer>
                     <Info>
                         <Header>
                             <Label>Episode - </Label>
