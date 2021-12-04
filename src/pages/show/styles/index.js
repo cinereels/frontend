@@ -36,8 +36,8 @@ export const EpisodeListContainer = styled.div`
 `;
 
 export const VideoContainer = styled.div`
-    height: 500px;
-    border: 1px solid #fff;
+    /* height: 500px; */
+    border-bottom: 0.2px solid #ababab;
 `;
 
 export const Info = styled.div`

@@ -5,6 +5,7 @@ import "rc-slider/assets/index.css";
 import useVideoPlayer from "../../hooks/useVideoPlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+// import Iframe from 'react-iframe';
 
 const VideoComponent = ({ title, videoUrl }) => {
   const videoElement = useRef({
@@ -13,6 +14,7 @@ const VideoComponent = ({ title, videoUrl }) => {
     play: () => {},
     pause: () => {},
   });
+  
   const {
     isPlaying,
     progress,
@@ -84,6 +86,7 @@ const VideoComponent = ({ title, videoUrl }) => {
           src={videoUrl}
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
+          id="Frame"
         />
         <div className="controls" style={scrollButtonStyle}>
           <div className="btn-grp">
@@ -175,7 +178,8 @@ const VideoComponent = ({ title, videoUrl }) => {
           <div
             style={{
               marginBottom: "0%",
-              width: handle.active === false ? "600px" : "1200px",
+              // width: handle.active === false ? "600px" : "1200px",
+              width: "90%"
             }}
           >
             <Slider
