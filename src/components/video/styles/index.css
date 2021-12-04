@@ -2,11 +2,14 @@ abody {
   background: transparent;
 }
 
-.container {
+.video-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100%; */
+  /* border-bottom: 1px solid #fff; */
+  color: #fff;
+  overflow: hidden;
 }
 
 h1 {
@@ -14,21 +17,32 @@ h1 {
 }
 
 video {
+  /* height: 100%; */
   width: 100%;
+  object-fit: contain;
+}
+
+iframe {
+  /* height: 100%; */
+  width: 100%;
+  object-fit: contain;
 }
 
 .video-wrapper {
   width: 100%;
-  max-width: 700px;
+  min-height: 400px;
+  /* max-width: 700px; */
   position: relative;
   display: flex;
   justify-content: center;
   overflow: hidden;
   border-radius: 10px;
+  /* border: 1px solid #fff; */
 }
 
 .video-wrapper:hover .controls {
-  transform: translateY(0%);
+  /* transform: translateY(0%); */
+  opacity: 1;
 }
 
 .controls {
@@ -47,8 +61,10 @@ video {
   /* backdrop-filter: blur(4px); */
   /* -webkit-backdrop-filter: blur(4px); */
   border: none;
-  transform: translateY(100%);
+  /* transform: translateY(100%); */
   transition: all 0.5s ease-in-out;
+  transition-property: opacity;
+  opacity: 0;
 }
 
 .actions button {
