@@ -212,6 +212,7 @@ const VideoComponent = ({ title, videoUrl }) => {
                 {Math.floor(
                   Math.floor(videoElement.current.duration % 3600) / 60
                 )}
+              
                 :{Math.floor(videoElement.current.duration % 60)}
               </p>
             </div>
