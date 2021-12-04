@@ -87,7 +87,9 @@ const VideoComponent = ({ title, videoUrl }) => {
         />
         <div className="controls" style={scrollButtonStyle}>
           <div className="btn-grp">
-            <div className="video-title" style={fontStyleCustom}>{title}</div>
+            <div className="video-title" style={fontStyleCustom}>
+              {title}
+            </div>
             <button className="full-screen">
               <FontAwesomeIcon
                 icon="closed-captioning"
@@ -175,7 +177,7 @@ const VideoComponent = ({ title, videoUrl }) => {
           <div
             style={{
               marginBottom: "0%",
-              width: handle.active === false ? "600px" : "1200px",
+              width: "90%",
             }}
           >
             <Slider
@@ -206,8 +208,11 @@ const VideoComponent = ({ title, videoUrl }) => {
                 {Math.floor(videoElement.current.currentTime % 60)}
               </p>
               <p>
-                {Math.floor(videoElement.current.duration / 60)}:
-                {Math.floor(videoElement.current.duration % 60)}
+                {Math.floor(videoElement.current.duration / 3600)}
+                {Math.floor(
+                  Math.floor(videoElement.current.duration % 3600) / 60
+                )}
+                :{Math.floor(videoElement.current.duration % 60)}
               </p>
             </div>
           </div>
