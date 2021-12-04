@@ -2,7 +2,9 @@ import React from 'react';
 import EpisodeCard from '../episode-card';
 import { Container, List } from './styles';
 
-const EpisodeList = ({ episodes = [] }) => {
+const EpisodeList = ({ episodes = [], showButtons, activeEpisode, setActiveEpisode, size }) => {
+    
+
     return (
         <Container>
             <List>
@@ -13,6 +15,10 @@ const EpisodeList = ({ episodes = [] }) => {
                         title={e.title}
                         description={e.description}
                         image={e.image}
+                        showButtons={showButtons}
+                        size={size}
+                        active={activeEpisode === e.id}
+                        onClick={() => setActiveEpisode(e.id)}
                     />)
                 }
             </List>

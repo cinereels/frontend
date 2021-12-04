@@ -8,11 +8,11 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
     cursor: pointer;
     width: 100%;
-    background-color: ${ ({ theme }) => theme.secondary };
+    background-color: ${ ({ theme, active }) => active ? theme.black : theme.secondary };
     border-radius: 5px;
 
     &:hover {
-        background-color: ${ ({ theme }) => theme.dark };
+        background-color: ${ ({ theme, active }) => active ? theme.black : theme.dark };
     }
 `;
 
@@ -20,11 +20,17 @@ export const Row = styled.div`
     display: flex;
     align-items: center;
     padding: 20px;
+    height: 100%;
+`;
+
+export const DisplaySection = styled.div`
+    width: 20%;
+    height: 100%;
 `;
 
 export const Display = styled.div`
-    width: 20%;
-    height: 100%;
+    width: 100%;
+    height: ${ ({ size }) => size === 'sm' ? '90px' : '120px' };
     overflow: hidden;
     border-radius: 5px;
     /* border: 1px solid #ffffff; */
@@ -50,22 +56,22 @@ export const Header = styled.div`
 `;
 
 export const Label = styled.p`
-    font-size: 18px;
+    font-size: ${({ size }) => size === 'sm' ? '14px' : '18px' };
     margin: 0;
 `;  
 
 export const EpisodeNo = styled.p`
-    font-size: 18px;
+    font-size: ${({ size }) => size === 'sm' ? '14px' : '18px' };
     margin: 0;
 `;
 
 export const Title = styled.p`
-    font-size: 18px;
+    font-size: ${({ size }) => size === 'sm' ? '14px' : '18px' };
     margin: 0;
 `;
 
 export const Description = styled.p`
-    font-size: 16px;
+    font-size: ${({ size }) => size === 'sm' ? '12px' : '16px' };
     color: ${ ({ theme }) => theme.white };
     text-overflow: ellipsis;
     margin: 0;
