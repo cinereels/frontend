@@ -7,7 +7,7 @@ import "./styles/index.css";
 
 const SettingRight = ({ settingValue }) => {
   return (
-    <div>
+    <div className="setting-right-wrapper">
       <div className="setting-right-container">
         {settingValue === "3" ? (
           <SettingQuality />

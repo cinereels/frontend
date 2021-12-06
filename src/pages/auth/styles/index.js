@@ -47,6 +47,15 @@ export const AuthOptions = styled.div`
     justify-content: center;
 `;
 
+export const ErrorContainer = styled.div`
+    
+`;
+
+export const ErrorText = styled.p`
+    margin: 0;
+    color: ${ ({ theme }) => theme.primary };
+`;
+
 export const Helper = styled.div`
     display: flex;
     align-items: center;

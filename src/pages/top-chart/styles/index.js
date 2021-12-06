@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export const Container = styled.div`
     height: 100vh;
     position: fixed;
+    background-color: ${ ({ theme }) => theme.background};
 `;
 
 export const Wrapper = styled.div`
