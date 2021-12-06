@@ -22,6 +22,7 @@ import CustomThemeProvider from "./containers/custom-theme-provider";
 import Layout from "./containers/layout";
 import { BrowserRouter } from "react-router-dom";
 import Navigator from "./containers/navigator";
+import ReduxProvider from './store';
 
 library.add(
   fab,
@@ -44,11 +45,13 @@ library.add(
 function App() {
   return (
     <CustomThemeProvider>
-      <BrowserRouter>
-        <Layout>
-          <Navigator />
-        </Layout>
-      </BrowserRouter>
+      <ReduxProvider>
+        <BrowserRouter>
+          <Layout>
+            <Navigator />
+          </Layout>
+        </BrowserRouter>
+      </ReduxProvider>
     </CustomThemeProvider>
   );
 }

@@ -1,8 +1,15 @@
 import React  from "react";
+import { useHistory } from "react-router";
 import SettingButton from "../setting-button";
 import "./styles/index.css";
 
 const SettingLeft = ({ settingValue, handler }) => {
+  const history = useHistory();
+
+  const goToLogout = () => {
+    history.push('/logout');
+  }
+
   return (
     <div>
       <div className="setting-left-container">
@@ -49,7 +56,7 @@ const SettingLeft = ({ settingValue, handler }) => {
           title="Logout"
           settingValue={settingValue}
           tab="7"
-          handler={handler}
+          handler={goToLogout}
         />
       </div>
     </div>

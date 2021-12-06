@@ -4,8 +4,23 @@ import Spacer from '../../components/spacer';
 import { Container, ButtonContainer, Text, Wrapper, ButtonSection, FilledButton, OutlinedButton } from './styles';
 
 import bg from '../../images/backgrounds/jeff-pierre-5X5I20O_Vbg-unsplash.jpg';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/actions';
+import { useHistory } from 'react-router';
 
 const LogoutPage = () => {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const yesHandler = async () => {
+        await dispatch(logout());
+        history.push('/guest');
+    }
+
+    const noHandler = () => {
+        history.goBack();
+    }
+
     return (
         <Container bg={bg}>
             <Wrapper>
@@ -15,13 +30,13 @@ const LogoutPage = () => {
                 <Spacer type={'vertical'} size={30} />
                 <ButtonSection>
                     <ButtonContainer>
-                        <FilledButton>
+                        <FilledButton onClick={yesHandler}>
                             Yes
                         </FilledButton>
                     </ButtonContainer>
                     <Spacer type={'horizontal'} size={10} />
                     <ButtonContainer>
-                        <OutlinedButton>
+                        <OutlinedButton onClick={noHandler}>
                             No
                         </OutlinedButton>
                     </ButtonContainer>

@@ -6,13 +6,20 @@ import Brand from '../../components/brand';
 import FeaturedButton from '../../components/featured-button';
 import Spacer from '../../components/spacer';
 import bg from '../../images/backgrounds/jeff-pierre-5X5I20O_Vbg-unsplash.jpg';
+import { useDispatch } from 'react-redux';
+import { login, signup } from '../../store/actions';
+import { useHistory } from 'react-router-dom';
 
 const AuthPage = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
     const [isLogin, setIsLogin] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const iconSize = 30;
 
@@ -20,21 +27,40 @@ const AuthPage = () => {
         setIsLogin(prevState => !prevState);
     }
 
-    const login = () => {
-
+    const authLogin = async () => {
+        setIsLoading(true);
+        try {
+            await dispatch(login({ email, password }));
+            setIsLoading(false);
+            history.push('/');
+        } catch (err) {
+            setIsLoading(false);
+        }
     }
 
-    const signup = () => {
+    const authSignup = async () => {
+        if (password !== passwordConfirm) {
+            return;
+        }
 
+        setIsLoading(true);
+
+        try {
+            await dispatch(signup({ email, password }));
+            setIsLoading(false);
+            history.push('/');
+        } catch (err) {
+            setIsLoading(false);
+        }
     }
 
     const submit = (e) => {
         e.preventDefault();
 
         if (isLogin) {
-            login();
+            authLogin();
         } else {
-            signup();
+            authSignup();
         }
     }
 
@@ -45,7 +71,7 @@ const AuthPage = () => {
                     <Photo src={bg} />
                 </Display>
                 <FormContainer>
-                    <Form>
+                    <Form onSubmit={submit}>
                         <FormWrapper>
                             <Brand size={40} />
                             <Spacer type={'vertical'} size={40} />
@@ -92,7 +118,7 @@ const AuthPage = () => {
                             </AuthOptions>
                             <Spacer type={'vertical'} size={40} />
                             <div style={{ flex: 1 }} />
-                            <FeaturedButton block textSize={18} onClick={submit}>
+                            <FeaturedButton block textSize={18} type={'submit'}>
                                 {isLogin ? 'Login' : 'Signup'}
                             </FeaturedButton>
                             <Spacer type={'vertical'} size={40} />
