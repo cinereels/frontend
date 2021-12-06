@@ -4,3 +4,22 @@ export {
     logout,
     signup,
 } from './auth';
+
+export {
+    addSeries,
+    fetchAllSeries,
+    updateSeries,
+    deleteSeries,
+} from './series';
+
+export {
+    addSeason,
+    updateSeason,
+    deleteSeason,
+} from './season';
+
+export {
+    addEpisode,
+    updateEpisode,
+    deleteEpisode,
+} from './episode';
