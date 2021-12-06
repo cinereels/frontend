@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Container, Display, FormContainer, Form, FormWrapper, Wrapper, Photo, AuthOptions, Helper, SwitchButton, SwitchText } from './styles';
+import { Container, Display, FormContainer, Form, FormWrapper, Wrapper, Photo, AuthOptions, Helper, SwitchButton, SwitchText, ErrorContainer, ErrorText } from './styles';
 import { IoLogoGoogle, IoLogoFacebook, IoLogoApple } from 'react-icons/io5';
 import { Input, Button } from '../../UI';
 import Brand from '../../components/brand';
 import FeaturedButton from '../../components/featured-button';
 import Spacer from '../../components/spacer';
 import bg from '../../images/backgrounds/jeff-pierre-5X5I20O_Vbg-unsplash.jpg';
+import bg1 from '../../images/backgrounds/9wzdncrfj3tj-background.jpeg';
 import { useDispatch } from 'react-redux';
 import { login, signup } from '../../store/actions';
 import { useHistory } from 'react-router-dom';
+import { getErrorMsg } from '../../utility/error-config';
 
 const AuthPage = () => {
     const dispatch = useDispatch();
@@ -17,6 +19,8 @@ const AuthPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+
+    const [error, setError] = useState();
 
     const [isLogin, setIsLogin] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
@@ -35,15 +39,18 @@ const AuthPage = () => {
             history.push('/');
         } catch (err) {
             setIsLoading(false);
+            setError(getErrorMsg(err, 'Error Logging In!'));
         }
     }
 
     const authSignup = async () => {
+        setIsLoading(true);
+
         if (password !== passwordConfirm) {
+            setIsLoading(false);
+            setError('Passwords are not matching!');
             return;
         }
-
-        setIsLoading(true);
 
         try {
             await dispatch(signup({ email, password }));
@@ -51,6 +58,7 @@ const AuthPage = () => {
             history.push('/');
         } catch (err) {
             setIsLoading(false);
+            setError(getErrorMsg(err, 'Error Signing Up!'));
         }
     }
 
@@ -68,7 +76,7 @@ const AuthPage = () => {
         <Container>
             <Wrapper>
                 <Display>
-                    <Photo src={bg} />
+                    <Photo src={bg1} />
                 </Display>
                 <FormContainer>
                     <Form onSubmit={submit}>
@@ -117,8 +125,12 @@ const AuthPage = () => {
                                 />
                             </AuthOptions>
                             <Spacer type={'vertical'} size={40} />
-                            <div style={{ flex: 1 }} />
-                            <FeaturedButton block textSize={18} type={'submit'}>
+                            {error && <ErrorContainer>
+                                <ErrorText>{error}</ErrorText>
+                            </ErrorContainer>}
+                            <Spacer type={'vertical'} size={40} />
+                            {/* <div style={{ flex: 1 }} /> */}
+                            <FeaturedButton block textSize={18} type={'submit'} loading={isLoading}>
                                 {isLogin ? 'Login' : 'Signup'}
                             </FeaturedButton>
                             <Spacer type={'vertical'} size={40} />

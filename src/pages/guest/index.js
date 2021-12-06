@@ -17,20 +17,24 @@ const Guest = () => {
 
   return (
     <div className="outer-container">
-      <div className="btn-div">
-        <button className="btn" onClick={goToLogin}>Login</button>
-      </div>
-      <Spacer type={'vertical'} size={50} />
-      <Brand size={50} />
-      <div className="container">
-        <Card imageUrl={bg1} title="Live Action" />
-        <div style={{ marginBottom: "100px" }}>
-          <Card imageUrl={bg2} title="Unlimited Entertainment" />
+      <div className="outer-container-overlay">
+        <div className="btn-div">
+          <button className="btn" onClick={goToLogin}>Login</button>
         </div>
-        <Card imageUrl={bg3} title="No subscription required" />
-      </div>
-      <div className="btn-div1">
-        <button className="btn1" onClick={goToLogin}>Join Today</button>
+        <div className="inner-container">
+          <Spacer type={'vertical'} size={50} />
+          <Brand size={50} />
+          <div className="container">
+            <Card imageUrl={bg1} title="Live Action" />
+            <div style={{ marginBottom: "100px" }}>
+              <Card imageUrl={bg2} title="Unlimited Entertainment" />
+            </div>
+            <Card imageUrl={bg3} title="No subscription required" />
+          </div>
+          <div className="btn-div1">
+            <button className="btn1" onClick={goToLogin}>Join Today</button>
+          </div>
+        </div>
       </div>
     </div>
   );

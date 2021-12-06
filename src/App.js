@@ -23,6 +23,7 @@ import Layout from "./containers/layout";
 import { BrowserRouter } from "react-router-dom";
 import Navigator from "./containers/navigator";
 import ReduxProvider from './store';
+// import 'antd/dist/antd.css';
 
 library.add(
   fab,

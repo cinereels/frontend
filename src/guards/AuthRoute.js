@@ -1,12 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { autoLogin } from '../store/actions';
 
 const AuthRoute = ({ path, children }) => {
-    const token = useSelector(state => state.ath.token);
-
-    const isAuth = token !== null && token !== undefined;
-
-    // console.log('token', token);
+    const isAuth = useSelector(state => state.ath.token !== null);
 
     if (!isAuth) {
         return <Redirect to={'/guest'} />;
