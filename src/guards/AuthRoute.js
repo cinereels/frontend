@@ -1,10 +1,15 @@
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
 const AuthRoute = ({ path, children }) => {
-    const isAuth = false;
+    const token = useSelector(state => state.ath.token);
+
+    const isAuth = token !== null && token !== undefined;
+
+    // console.log('token', token);
 
     if (!isAuth) {
-        <Redirect to={'/auth'} />   
+        return <Redirect to={'/guest'} />;
     }
 
     return (

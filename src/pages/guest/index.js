@@ -6,12 +6,19 @@ import bg2 from "../../images/GOT.jpeg";
 import bg3 from "../../images/TV.jpeg";
 import Brand from "../../components/brand";
 import Spacer from "../../components/spacer";
+import { useHistory } from 'react-router-dom';
 
 const Guest = () => {
+  const history = useHistory();
+
+  const goToLogin = () => {
+    history.push('/auth');
+  };
+
   return (
     <div className="outer-container">
       <div className="btn-div">
-        <button className="btn">Login</button>
+        <button className="btn" onClick={goToLogin}>Login</button>
       </div>
       <Spacer type={'vertical'} size={50} />
       <Brand size={50} />
@@ -23,7 +30,7 @@ const Guest = () => {
         <Card imageUrl={bg3} title="No subscription required" />
       </div>
       <div className="btn-div1">
-        <button className="btn1">Join Today</button>
+        <button className="btn1" onClick={goToLogin}>Join Today</button>
       </div>
     </div>
   );

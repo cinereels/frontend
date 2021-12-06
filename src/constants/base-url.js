@@ -1,0 +1,1 @@
+export const baseUrl = 'https://cinereels.herokuapp.com/api/';
