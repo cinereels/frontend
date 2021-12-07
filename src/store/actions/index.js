@@ -3,6 +3,7 @@ export {
     login,
     logout,
     signup,
+    verify,
 } from './auth';
 
 export {

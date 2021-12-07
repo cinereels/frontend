@@ -1,4 +1,5 @@
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const SET_AUTH_VERIFIER_ID = "SET_AUTH_VERIFIER_ID";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
 
 export const SERIES_SUCCESS = "SERIES_SUCCESS";
@@ -10,9 +11,10 @@ export const EPISODE_SUCCESS = "EPISODE_SUCCESS";
 
 export const SET_USERS = "SET_USERS";
 export const USER_SUCCESS = "USER_SUCCESS";
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 export const SET_MOVIES = "SET_MOVIES";
 export const MOVIE_SUCCESS = "MOVIE_SUCCESS";
 
-export const SET_CHANNELS = 'SET_CHANNELS';
-export const CHANNEL_SUCCESS = 'CHANNEL_SUCCESS';
+export const SET_CHANNELS = "SET_CHANNELS";
+export const CHANNEL_SUCCESS = "CHANNEL_SUCCESS";

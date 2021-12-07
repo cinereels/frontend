@@ -1,6 +1,6 @@
 import axios from '../../axios-config';
 import { header } from '../../utility/header-config';
-import { SET_USERS, USER_SUCCESS } from '../action-types';
+import { SET_CURRENT_USER, SET_USERS, USER_SUCCESS } from '../action-types';
 
 export const fetchUsers = (token) => {
     return async dispatch => {
@@ -18,6 +18,25 @@ const setUsers = (users) => {
     return {
         type: SET_USERS,
         users,
+    }
+}
+
+export const fetchCurrentUser = (token) => {
+    return async dispatch => {
+        try {
+            const response = await axios.get('current-user', header(token));
+            dispatch(setCurrentUser(response.data.currentUser));
+        } catch (err) {
+            throw err;
+        }
+    }
+}
+
+
+const setCurrentUser = (currentUser) => {
+    return {
+        type: SET_CURRENT_USER,
+        currentUser,
     }
 }
 

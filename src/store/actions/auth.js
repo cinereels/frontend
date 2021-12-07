@@ -47,6 +47,26 @@ export const signup = (signupData) => {
     }
 }
 
+
+export const verify = (verifyData) => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('auth/verify', verifyData);
+            const { verifierId } = response.data;
+            dispatch(setVerifier(verifierId));
+        } catch (err) {
+            throw err;
+        }
+    }
+}
+
+const setVerifier = (verifierId) => {
+    return {
+        type: actionTypes.SET_AUTH_VERIFIER_ID,
+        verifierId,
+    };
+}
+
 export const logout = () => {
     return async dispatch => {
         localStorage.removeItem('authData');

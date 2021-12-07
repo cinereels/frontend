@@ -28,7 +28,7 @@ export const updateEpisode = (token, id, episodeData) => {
 export const deleteEpisode = (token, id) => {
     return async dispatch => {
         try {
-            await axios.post('episode/' + id, header(token));
+            await axios.delete('episode/' + id, header(token));
             dispatch(episodeSuccess());
         } catch (err) {
             throw err;
