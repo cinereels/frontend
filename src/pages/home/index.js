@@ -10,8 +10,16 @@ import photo2 from "../../images/GOT.jpeg";
 import photo3 from "../../images/photo.jpeg";
 import photo4 from "../../images/squid.jpeg";
 import Theme from "../../components/theme";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../../store/actions";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const token = useSelector(state => state.ath.token);
+  const movies = useSelector(state => state.mov.movies);
+
   const theme = {
     title: 'Squid Game',
     image: photo4,
@@ -43,34 +51,81 @@ const Home = () => {
     {
       id: 'lr1',
       name: 'Squid Game',
-      image: photo4,
+      gallery: [{
+        id: 'lr1g1',
+        imageUrl: photo4,
+        caption: 'squid game',
+        type: 'image',
+      }]
+      // image: photo4,
     },
     {
       id: 'lr2',
       name: 'Money Heist',
-      image: photo1,
+      // image: photo1,
+      gallery: [{
+        id: 'lr2g1',
+        imageUrl: photo1,
+        caption: 'money heist',
+        type: 'image',
+      }]
     },
     {
       id: 'lr3',
       name: 'Game Of Thrones',
-      image: photo2,
+      // image: photo2,
+      gallery: [{
+        id: 'lr3g1',
+        imageUrl: photo2,
+        caption: 'game of thrones',
+        type: 'image',
+      }]
     },
     {
       id: 'lr4',
       name: 'Dark',
-      image: photo3,
+      // image: photo3,
+      gallery: [{
+        id: 'lr4g1',
+        imageUrl: photo3,
+        caption: 'dark',
+        type: 'image',
+      }]
     },
     {
       id: 'lr5',
       name: 'Game Of Thrones',
-      image: photo2,
+      // image: photo2,
+      gallery: [{
+        id: 'lr5g1',
+        imageUrl: photo2,
+        caption: 'game of thrones',
+        type: 'image',
+      }]
     },
     {
       id: 'lr6',
       name: 'Squid Game',
-      image: photo4,
+      // image: photo4,
+      gallery: [{
+        id: 'lr6g1',
+        imageUrl: photo4,
+        caption: 'squid game',
+        type: 'image',
+      }]
     },
   ];
+
+
+  useEffect(() => {
+    dispatch(fetchMovies(token))
+      .then(result => {
+        
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, [token, dispatch]);
 
   return (
     <>
@@ -88,6 +143,9 @@ const Home = () => {
       <div className="recent-activity">
         <ShowList legend={'Latest Releases'} list={latestReleases} />
       </div>
+      {movies.length > 0 && <div className="recent-activity">
+        <ShowList legend={'Movies'} list={movies} />
+      </div>}
     </>
   );
 };

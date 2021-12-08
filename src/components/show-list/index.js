@@ -16,7 +16,7 @@ const ShowList = ({ list, legend, type = 'card' }) => {
                             <ShowCard
                                 key={listItem.id}
                                 name={listItem.name}
-                                image={listItem.image}
+                                image={listItem.gallery[0].imageUrl}
                             />
                             :
                             <ShowCircle key={listItem.id} image={listItem.image} />

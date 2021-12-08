@@ -24,3 +24,12 @@ export {
     updateEpisode,
     deleteEpisode,
 } from './episode';
+
+export {
+    addMovie,
+    fetchMovies,
+    updateMovie,
+    deleteMovie,
+    addMovieGallery,
+    removeMovieGallery,
+} from './movie';

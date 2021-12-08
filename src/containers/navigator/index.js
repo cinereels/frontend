@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./styles";
 import { Switch } from "react-router-dom";
-import { AuthRoute, GuestRoute } from "../../guards";
+import { AdminRoute, AuthRoute, GuestRoute } from "../../guards";
 import AuthPage from "../../pages/auth";
 import HomePage from "../../pages/home";
 import GuestPage from "../../pages/guest";
@@ -13,6 +13,8 @@ import LobbyPage from "../../pages/lobby";
 import SettingPage from "../../pages/setting";
 import PlayerPage from "../../pages/player";
 import ShowPage from "../../pages/show";
+import AdminPage from "../../pages/admin";
+import AddMoviePage from "../../pages/admin/add-movie/index";
 
 const Navigator = () => {
     return (
@@ -48,6 +50,12 @@ const Navigator = () => {
                 <AuthRoute path={'/logout'}>
                     <LogoutPage />
                 </AuthRoute>
+                <AdminRoute path={'/admin/add-movie'}>
+                    <AddMoviePage />
+                </AdminRoute>
+                <AdminRoute path={'/admin'}>
+                    <AdminPage />
+                </AdminRoute>
                 <AuthRoute path={'/'}>
                     <HomePage />
                 </AuthRoute>

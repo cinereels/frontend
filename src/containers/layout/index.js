@@ -20,8 +20,8 @@ const Layout = ({ children }) => {
     const authDataJSON = localStorage.getItem('authData');
     if (authDataJSON) {
       const authData = JSON.parse(authDataJSON);
-      const { token, id, expiryDate } = authData;
-      dispatch(autoLogin(token, id, expiryDate));
+      const { token, id, expiryDate, isAdmin } = authData;
+      dispatch(autoLogin(token, id, expiryDate, isAdmin));
     } else {
       setIsLoading(false);
     }

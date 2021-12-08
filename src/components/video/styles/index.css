@@ -35,7 +35,7 @@ iframe {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* border: 1px solid #fff; */
 }
 

@@ -1,13 +1,16 @@
 import React from "react";
 import "./styles/index.css";
 import Brand from "../brand";
-import { BiHomeAlt, BiVideo, BiSearch, BiFilm, BiBell, BiCog } from 'react-icons/bi';
+import { BiHomeAlt, BiVideo, BiSearch, BiFilm, BiBell, BiCog, BiUser } from 'react-icons/bi';
 import theme from "../../styles/theme";
 import { NavLink, useLocation } from 'react-router-dom';
 import Spacer from "../spacer";
+import { useSelector } from "react-redux";
 
 const MyNav = () => {
   const location = useLocation();
+  
+  const isAdmin = useSelector(state => state.ath.isAdmin);
 
   const iconColor = theme.white;
   const activeIconColor = theme.primary;
@@ -35,6 +38,9 @@ const MyNav = () => {
           <NavLink to='/top-charts'>
             <BiFilm color={location.pathname === '/top-charts' ? activeIconColor : iconColor} size={iconSize} />
           </NavLink>
+          {isAdmin && <NavLink to='/admin'>
+            <BiUser color={location.pathname === '/admin' ? activeIconColor : iconColor} size={iconSize} />
+          </NavLink>}
           <NavLink to='/notifications'>
             <BiBell color={location.pathname === '/notifications' ? activeIconColor : iconColor} size={iconSize} />
           </NavLink>
