@@ -1,6 +1,6 @@
 import axios from "../../axios-config";
 import { header } from "../../utility/header-config";
-import { SET_CHANNELS, CHANNEL_SUCCESS } from "../action-types";
+import { SET_CHANNELS, CHANNEL_SUCCESS, ADD_CHANNEL_GALLERY, REMOVE_CHANNEL_GALLERY } from "../action-types";
 
 const setChannels = (channels) => {
   return {
@@ -59,3 +59,40 @@ export const deleteChannel = (token, id) => {
     }
   };
 };
+
+export const addChannelGallery = (token, galleryData) => {
+  return async dispatch => {
+    try {
+      const response = await axios.post('gallery', galleryData, header(token));
+      const { gallery } = response.data;
+      dispatch(addChannelGallerySuccess(gallery))
+    } catch (err) {
+      throw err;
+    }
+  }
+}
+
+const addChannelGallerySuccess = (gallery) => {
+  return {
+    type: ADD_CHANNEL_GALLERY,
+    galleryItem: gallery,
+  }
+}
+
+export const removeChannelGallery = (token, id) => {
+  return async dispatch => {
+    try {
+      await axios.delete('gallery/' + id, header(token));
+      dispatch(removeChannelGallerySuccess(id));
+    } catch (err) {
+      throw err;
+    }
+  }
+}
+
+const removeChannelGallerySuccess = (id) => {
+  return {
+    type: REMOVE_CHANNEL_GALLERY,
+    galleryId: id,
+  }
+}

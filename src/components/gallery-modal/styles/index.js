@@ -42,4 +42,8 @@ export const AddGalleryButton = styled.button`
     padding: 10px;
     color: ${ ({ theme }) => theme.white };
     font-size: 17px;
+
+    &:disabled {
+        background: ${ ({ theme }) => theme.primaryAccent };
+    }
 `;

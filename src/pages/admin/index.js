@@ -10,12 +10,20 @@ const AdminPage = () => {
         history.push('/admin/add-movie');
     }
 
+    const goToAddChannel = () => {
+        history.push('/admin/add-channel');
+    }
+
+    const goToAddSeries = () => {
+        history.push('/admin/add-tv-series');
+    }
+
     return (
         <Container>
             <Wrapper>
                 <CreateCard title={'Movies'} onClick={goToAddMovie} />
-                <CreateCard title={'TV Series'} />
-                <CreateCard title={'Channels'} />
+                <CreateCard title={'TV Series'} onClick={goToAddSeries} />
+                <CreateCard title={'Channels'} onClick={goToAddChannel} />
             </Wrapper>
         </Container>
     );

@@ -6,26 +6,25 @@ import Spacer from '../../../components/spacer';
 import FeaturedButton from '../../../components/featured-button';
 import { useSelector, useDispatch } from 'react-redux';
 import GalleryModal from '../../../components/gallery-modal';
-import { addMovieGallery, addMovie } from '../../../store/actions';
+import { addChannel, addChannelGallery } from '../../../store/actions';
 import { getErrorMsg } from '../../../utility/error-config';
 import CreateLayout from '../../../components/create-layout';
 import Gallery from '../../../components/gallery';
 import theme from '../../../styles/theme';
+import FrameComponent from '../../../components/frame-video';
 
-const AddMoviePage = () => {
+const AddChannelPage = () => {
     const dispatch = useDispatch();
 
     const token = useSelector(state => state.ath.token);
-    const gallery = useSelector(state => state.mov.gallery);
-    const ids = useSelector(state => state.mov.ids);
+    const gallery = useSelector(state => state.chn.gallery);
+    const ids = useSelector(state => state.chn.ids);
 
     const [name, setName] = useState('');
+    const [channelNo, setChannelNo] = useState();
     const [description, setDescription] = useState('');
-    const [movieUrl, setMovieUrl] = useState('');
+    const [channelUrl, setChannelUrl] = useState('');
     const [genre, setGenre] = useState('');
-    const [duration, setDuration] = useState('');
-    const [imdb, setImdb] = useState('');
-    const [rt, setRt] = useState('');
 
     const [showModal, setShowModal] = useState(false);
     const [error, setError] = useState();
@@ -33,28 +32,27 @@ const AddMoviePage = () => {
 
     const addGalleryHandler = async (galleryData) => {
         try {
-            await dispatch(addMovieGallery(token, galleryData)); 
+            await dispatch(addChannelGallery(token, galleryData)); 
         } catch (err) {
             setError(getErrorMsg(err, 'Error uploading gallery'));
         }
     }
 
-    const addMovieHandler = async () => {
+    const addChannelHandler = async () => {
         try {
             setIsLoading(true);
-            await dispatch(addMovie(token, {
+            await dispatch(addChannel(token, {
                 name,
+                channelNo: parseInt(channelNo),
                 description,
                 gallery: ids,
+                url: channelUrl,
+                live: true,
                 genre,
-                url: movieUrl,
-                duration,
-                imdb,
-                rt,
             }));
             setIsLoading(false);
         } catch (err) {
-            setError(getErrorMsg(err, 'Error adding movie'));
+            setError(getErrorMsg(err, 'Error adding channel'));
             setIsLoading(false);
         }
     }
@@ -72,7 +70,8 @@ const AddMoviePage = () => {
             <CreateLayout.Wrapper>
                 <CreateLayout.Preview>
                     <CreateLayout.VideoContainer>
-                        <VideoComponent title={name ? name : 'Title'} videoUrl={movieUrl} />
+                        {/* <VideoComponent title={name ? name : 'Title'} videoUrl={channelUrl} /> */}
+                        <FrameComponent title={name ? name : 'Title'} videoUrl={channelUrl} />
                     </CreateLayout.VideoContainer>
                     <CreateLayout.GalleryContainer>
                         <Gallery
@@ -89,30 +88,24 @@ const AddMoviePage = () => {
                     <Spacer type={'vertical'} size={40} />
                     <Input placeholder="Description" value={description} setValue={setDescription} />
                     <Spacer type={'vertical'} size={40} />
-                    <Input placeholder="Movie URL" value={movieUrl} setValue={setMovieUrl} />
+                    <Input placeholder="Channel URL" value={channelUrl} setValue={setChannelUrl} />
                     <Spacer type={'vertical'} size={20} />
                     <Text>OR</Text>
                     <Spacer type={'vertical'} size={20} />
                     <UploadButton>Upload</UploadButton>
-                    <Spacer type={'vertical'} size={20} />
-                    <Row>
-                        <Input placeholder="Genre" value={genre} setValue={setGenre} />
-                        <Spacer type={'horizontal'} size={20} />
-                        <Input placeholder="Duration" value={duration} setValue={setDuration} />
-                    </Row>
                     <Spacer type={'vertical'} size={30} />
                     <Row>
-                        <Input placeholder="IMDB Rating" value={imdb} setValue={setImdb} />
+                        <Input placeholder="Channel No." value={channelNo} setValue={setChannelNo} type={'number'} />
                         <Spacer type={'horizontal'} size={20} />
-                        <Input placeholder="Rotten Tomatoes" value={rt} setValue={setRt} />
+                        <Input placeholder="Genre" value={genre} setValue={setGenre} />
                     </Row>
                     <div style={{ flex: 1 }} />
-                    <FeaturedButton block onClick={addMovieHandler} loading={isLoading}>Add Movie</FeaturedButton>
+                    <FeaturedButton block onClick={addChannelHandler} loading={isLoading}>Add Channel</FeaturedButton>
                     <Spacer type={'vertical'} size={150} />
                 </CreateLayout.Info>
             </CreateLayout.Wrapper>
             <GalleryModal
-                label={'Add Movie Gallery'}
+                label={'Add Channel Gallery'}
                 visible={showModal}
                 setVisible={setShowModal}
                 addGallery={addGalleryHandler}
@@ -121,6 +114,6 @@ const AddMoviePage = () => {
     );
 }
 
-export default AddMoviePage;
+export default AddChannelPage;
 
-// https://media.w3.org/2010/05/sintel/trailer_hd.mp4
+// https://123zcast.com/embed.php?player=desktop&v=willowusa&vw=100%&vh=520

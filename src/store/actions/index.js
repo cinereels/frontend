@@ -11,6 +11,8 @@ export {
     fetchAllSeries,
     updateSeries,
     deleteSeries,
+    addSeriesGallery,
+    removeSeriesGallery,
 } from './series';
 
 export {
@@ -33,3 +35,12 @@ export {
     addMovieGallery,
     removeMovieGallery,
 } from './movie';
+
+export {
+    addChannel,
+    updateChannel,
+    deleteChannel,
+    fetchChannels,
+    addChannelGallery,
+    removeChannelGallery,
+} from './channel';

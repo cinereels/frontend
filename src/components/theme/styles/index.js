@@ -1,9 +1,13 @@
 import styled from 'styled-components/macro';
 
+export const Mask = styled.div`
+    mask-image: linear-gradient(to bottom, #000000 60%, transparent 100%);
+`;
+
 export const Container = styled.div`
     margin-top: 0px;
     background-image: ${ ({ bg }) => `url(${bg})` };
-    height: 550px;
+    height: 80vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,12 +27,12 @@ export const Overlay = styled.div`
 export const Info = styled.div`
     color: white;
     position: relative;
-    width: 280px;
+    width: 340px;
 `;
 
 export const Title = styled.h1`
     color: white;
-    font-size: 35px;
+    font-size: 55px;
     margin-bottom: 15px;
 `;
 
@@ -43,7 +47,7 @@ export const Rating = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 280px;
+    width: 270px;
 `;
 
 export const Imdb = styled.div`
@@ -59,7 +63,7 @@ export const Rt = styled.div`
     display: flex;
     align-items: center;
     height: 30px;
-    margin-left: 10px;
+    margin-left: 0px;
 `;
 
 export const ButtonSection = styled.div`

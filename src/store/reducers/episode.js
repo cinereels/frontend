@@ -1,7 +1,7 @@
 import { EPISODE_SUCCESS } from '../action-types';
 
 const initialState = {
-
+    
 };
 
 const reducer = (state = initialState, action) => {

@@ -9,6 +9,8 @@ const GalleryModal = ({ visible, setVisible, label, addGallery }) => {
     const [caption, setCaption] = useState();
     const [type, setType] = useState();
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const mediaTypes = [
         {
             id: 'image',
@@ -24,6 +26,7 @@ const GalleryModal = ({ visible, setVisible, label, addGallery }) => {
 
     const addGalleryHandler = async () => {
         if (url && url.trim().length > 0) {
+            setIsLoading(true);
             await addGallery({
                 url,
                 caption,
@@ -33,6 +36,7 @@ const GalleryModal = ({ visible, setVisible, label, addGallery }) => {
             setUrl();
             setCaption();
             setType();
+            setIsLoading(false);
             setVisible(false);
         }
     }
@@ -69,7 +73,9 @@ const GalleryModal = ({ visible, setVisible, label, addGallery }) => {
                             onSelect={setType}
                         />
                         <Spacer type={'vertical'} size={20} />
-                        <AddGalleryButton height={40} onClick={addGalleryHandler} block>Add Gallery</AddGalleryButton>
+                        <AddGalleryButton height={40} onClick={addGalleryHandler} block disabled={isLoading}>
+                            {isLoading ? 'Adding Gallery...' : 'Add Gallery'}
+                        </AddGalleryButton>
                     </InputSection>
                 </Wrapper>
             </Container>

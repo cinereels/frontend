@@ -2,6 +2,8 @@ import { SERIES_SUCCESS, SET_SERIES } from '../action-types';
 
 const initialState = {
     allSeries: [],
+    seasons: [],
+    ids: [],
 };
 
 const reducer = (state = initialState, action) => {

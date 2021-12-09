@@ -15,6 +15,8 @@ import PlayerPage from "../../pages/player";
 import ShowPage from "../../pages/show";
 import AdminPage from "../../pages/admin";
 import AddMoviePage from "../../pages/admin/add-movie/index";
+import AddChannelPage from "../../pages/admin/add-channel/index";
+import AddSeriesPage from "../../pages/admin/add-series";
 
 const Navigator = () => {
     return (
@@ -52,6 +54,12 @@ const Navigator = () => {
                 </AuthRoute>
                 <AdminRoute path={'/admin/add-movie'}>
                     <AddMoviePage />
+                </AdminRoute>
+                <AdminRoute path={'/admin/add-channel'}>
+                    <AddChannelPage />
+                </AdminRoute>
+                <AdminRoute path={'/admin/add-tv-series'}>
+                    <AddSeriesPage />
                 </AdminRoute>
                 <AdminRoute path={'/admin'}>
                     <AdminPage />

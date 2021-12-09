@@ -6,6 +6,15 @@ import useVideoPlayer from "../../hooks/useVideoPlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
+const Iframe = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    play: () => {},
+    pause: () => {},
+  }));
+  return <iframe title="Cricket Match" {...props} ref={ref} />;
+});
+
+
 const FrameComponent = ({ title, videoUrl }) => {
   const videoElement = useRef({
     currentTime: 0,
@@ -66,18 +75,9 @@ const FrameComponent = ({ title, videoUrl }) => {
     color: "red",
   };
 
-  const Iframe = forwardRef((props, ref) => {
-    useImperativeHandle(ref, () => ({
-      play: () => {},
-      pause: () => {},
-    }));
-    return <iframe title="Cricket Match" {...props} ref={ref} />;
-  });
-
   return (
     <div
-    
-      className="container-video"
+      className="container-iframe"
       onMouseMove={setMouseMove}
       style={{ color: "white", width: "800px", height: "600px" }}
       onDoubleClick={toggleFullScreen}
@@ -87,10 +87,10 @@ const FrameComponent = ({ title, videoUrl }) => {
         }
       }}
     >
-      <FullScreen handle={handle} className="video-wrapper">
+      <FullScreen handle={handle} className="iframe-wrapper">
         <Iframe
-        width="800px"
-        height="600px"
+          width="100%"
+          height="500px"
           title="match"
           src={videoUrl}
           ref={videoElement}

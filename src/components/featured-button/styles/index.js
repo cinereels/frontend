@@ -10,5 +10,4 @@ export const Button = styled.button`
     border-radius: 5px;
     border: none;
     font-size: ${ ({ size = 18 }) => size + 'px' };
-    height: 60px;
 `;

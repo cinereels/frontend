@@ -1,6 +1,6 @@
 import axios from "../../axios-config";
 import { header } from "../../utility/header-config";
-import { SERIES_SUCCESS, SET_SERIES } from "../action-types";
+import { ADD_SERIES_GALLERY, REMOVE_SERIES_GALLERY, SERIES_SUCCESS, SET_SERIES } from "../action-types";
 
 export const fetchAllSeries = (token) => {
   return async (dispatch) => {
@@ -59,3 +59,40 @@ const seriesSuccess = () => {
     type: SERIES_SUCCESS,
   };
 };
+
+export const addSeriesGallery = (token, galleryData) => {
+  return async dispatch => {
+    try {
+      const response = await axios.post('gallery', galleryData, header(token));
+      const { gallery } = response.data;
+      dispatch(addSeriesGallerySuccess(gallery))
+    } catch (err) {
+      throw err;
+    }
+  }
+}
+
+const addSeriesGallerySuccess = (gallery) => {
+  return {
+    type: ADD_SERIES_GALLERY,
+    galleryItem: gallery,
+  }
+}
+
+export const removeSeriesGallery = (token, id) => {
+  return async dispatch => {
+    try {
+      await axios.delete('gallery/' + id, header(token));
+      dispatch(removeSeriesGallerySuccess(id));
+    } catch (err) {
+      throw err;
+    }
+  }
+}
+
+const removeSeriesGallerySuccess = (id) => {
+  return {
+    type: REMOVE_SERIES_GALLERY,
+    galleryId: id,
+  }
+}

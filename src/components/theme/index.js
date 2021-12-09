@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Overlay, Info, Title, Description, Rating, Imdb, Rt, ButtonSection, Button1, Button2 } from './styles';
+import { Container, Mask, Overlay, Info, Title, Description, Rating, Imdb, Rt, ButtonSection, Button1, Button2 } from './styles';
+import Player from 'react-background-video-player';
 
 const Theme = ({ title, description, image, imdb, rt, type = 'home' }) => {
     
@@ -41,21 +42,23 @@ const Theme = ({ title, description, image, imdb, rt, type = 'home' }) => {
 
 
     return (
-        <Container bg={image}>
-            <Overlay>
-                <Info>
-                    <Title>{title}</Title>
-                    <Description>
-                        {description}
-                    </Description>
-                </Info>
-                <Rating>
-                    <Imdb>IMDB - {imdb}</Imdb>
-                    <Rt>ROTTEN TOMATOES - {rt}</Rt>
-                </Rating>
-                {actions}
-            </Overlay>
-        </Container>
+        <Mask>
+            <Container bg={image}>
+                <Overlay>
+                    <Info>
+                        <Title>{title}</Title>
+                        <Description>
+                            {description}
+                        </Description>
+                    </Info>
+                    <Rating>
+                        <Imdb>IMDB - {imdb}</Imdb>
+                        <Rt>ROTTEN TOMATOES - {rt}</Rt>
+                    </Rating>
+                    {actions}
+                </Overlay>
+            </Container>
+        </Mask>
     );
 }
 

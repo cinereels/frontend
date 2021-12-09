@@ -14,6 +14,7 @@ export const UnderlinedContainer = styled.div`
 `;
 
 export const TextInput = styled.input`
+    width: 100%;
     border: none;
     background-color: rgba(255, 255, 255, 0);
     margin: 0;

@@ -12,13 +12,15 @@ import photo4 from "../../images/squid.jpeg";
 import Theme from "../../components/theme";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../../store/actions";
+import { fetchMovies, fetchChannels } from "../../store/actions";
+import Spacer from "../../components/spacer";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const token = useSelector(state => state.ath.token);
   const movies = useSelector(state => state.mov.movies);
+  const channels = useSelector(state => state.chn.channels);
 
   const theme = {
     title: 'Squid Game',
@@ -120,7 +122,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchMovies(token))
       .then(result => {
-        
+        return dispatch(fetchChannels(token));
+      })
+      .then(result => {
+        // loaded
       })
       .catch(err => {
         console.log(err);
@@ -137,15 +142,13 @@ const Home = () => {
         rt={theme.rt}
         type={'home'}
       />
+      <Spacer type={'vertical'} size={20} />
+      <ShowList legend={'Your Recent Activity'} list={recentActivity} type={'circle'} />
+      <ShowList legend={'Latest Releases'} list={latestReleases} />
       <div className="recent-activity">
-        <ShowList legend={'Your Recent Activity'} list={recentActivity} type={'circle'} />
       </div>
-      <div className="recent-activity">
-        <ShowList legend={'Latest Releases'} list={latestReleases} />
-      </div>
-      {movies.length > 0 && <div className="recent-activity">
-        <ShowList legend={'Movies'} list={movies} />
-      </div>}
+      {movies.length > 0 && <ShowList legend={'Movies'} list={movies} /> }
+      {channels.length > 0 && <ShowList legend={'Channels'} list={channels} /> }
     </>
   );
 };

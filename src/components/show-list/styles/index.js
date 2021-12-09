@@ -9,10 +9,10 @@ export const Row = styled.div`
   overflow-x: auto;
   align-items: center;
   white-space: nowrap;
-  padding: 20px 0;
+  padding: 20px 20px;
 `;
 
 export const Legend = styled.h3`
     color: #f0f0f0;
-    margin: 0;
+    margin: 0 20px;
 `;

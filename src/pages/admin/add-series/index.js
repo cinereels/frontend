@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import VideoComponent from '../../../components/video';
 import { Row, Text, UploadButton } from './styles';
-import { Input } from '../../../UI';
+import { Input, Select } from '../../../UI';
 import Spacer from '../../../components/spacer';
 import FeaturedButton from '../../../components/featured-button';
 import { useSelector, useDispatch } from 'react-redux';
 import GalleryModal from '../../../components/gallery-modal';
-import { addMovieGallery, addMovie } from '../../../store/actions';
+import { addMovieGallery, addMovie, addSeries, addSeriesGallery, addSeason, addEpisode } from '../../../store/actions';
 import { getErrorMsg } from '../../../utility/error-config';
 import CreateLayout from '../../../components/create-layout';
 import Gallery from '../../../components/gallery';
 import theme from '../../../styles/theme';
 
-const AddMoviePage = () => {
+const AddSeriesPage = () => {
     const dispatch = useDispatch();
 
     const token = useSelector(state => state.ath.token);
     const gallery = useSelector(state => state.mov.gallery);
     const ids = useSelector(state => state.mov.ids);
+    const seasons = useSelector(state => state.srs.seasons);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -29,33 +30,64 @@ const AddMoviePage = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [error, setError] = useState();
+    const [seasonList, setSeasonList] = useState([]);
+    const [currentSeason, setCurrentSeason] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const [isSeasonLoading, setIsSeasonLoading] = useState(false);
+    const [isEpisodeLoading, setIsEpisodeLoading] = useState(false);
+
+    useEffect(() => {
+        if (seasons.length) {
+            const sl = seasons.map(s => ({ title: 'Season - ' + s.seasonNo, value: s.seasonNo }));
+            setSeasonList(sl);
+        }
+    }, [seasons]);
 
     const addGalleryHandler = async (galleryData) => {
         try {
-            await dispatch(addMovieGallery(token, galleryData)); 
+            await dispatch(addSeriesGallery(token, galleryData)); 
         } catch (err) {
             setError(getErrorMsg(err, 'Error uploading gallery'));
         }
     }
 
-    const addMovieHandler = async () => {
+    const addSeriesHandler = async () => {
         try {
             setIsLoading(true);
-            await dispatch(addMovie(token, {
+            await dispatch(addSeries(token, {
                 name,
                 description,
                 gallery: ids,
                 genre,
-                url: movieUrl,
-                duration,
-                imdb,
-                rt,
+                seasons,
             }));
             setIsLoading(false);
         } catch (err) {
-            setError(getErrorMsg(err, 'Error adding movie'));
+            setError(getErrorMsg(err, 'Error adding TV series'));
             setIsLoading(false);
+        }
+    }
+
+    const addSeasonHandler = async (seasonData) => {
+        try {
+            setIsSeasonLoading(true);
+            await dispatch(addSeason(token, seasonData));
+            setIsSeasonLoading(false);
+        } catch (err) {
+            setError(getErrorMsg(err, 'Error adding season'));
+            setIsSeasonLoading(false);
+        }
+    }
+
+
+    const addEpisodeHandler = async (episodeData) => {
+        try {
+            setIsEpisodeLoading(true);
+            await dispatch(addEpisode(token, episodeData));
+            setIsEpisodeLoading(false);
+        } catch (err) {
+            setError(getErrorMsg(err, 'Error adding episode'));
+            setIsEpisodeLoading(false);
         }
     }
 
@@ -67,6 +99,10 @@ const AddMoviePage = () => {
         setShowModal(false);
     }
 
+    const selectSeasonHandler = (v) => {
+        setCurrentSeason(v);
+    }
+
     return (
         <CreateLayout>
             <CreateLayout.Wrapper>
@@ -75,12 +111,8 @@ const AddMoviePage = () => {
                         <VideoComponent title={name ? name : 'Title'} videoUrl={movieUrl} />
                     </CreateLayout.VideoContainer>
                     <CreateLayout.GalleryContainer>
-                        <Gallery
-                            type={'brick'}
-                            color={theme.black}
-                            gallery={gallery}
-                            openModal={openModal}
-                        />
+                        <Select placeholder="Season" options={seasonList} onSelect={selectSeasonHandler} />
+
                     </CreateLayout.GalleryContainer>
                 </CreateLayout.Preview>
                 <CreateLayout.Info>
@@ -89,17 +121,13 @@ const AddMoviePage = () => {
                     <Spacer type={'vertical'} size={40} />
                     <Input placeholder="Description" value={description} setValue={setDescription} />
                     <Spacer type={'vertical'} size={40} />
-                    <Input placeholder="Movie URL" value={movieUrl} setValue={setMovieUrl} />
-                    <Spacer type={'vertical'} size={20} />
-                    <Text>OR</Text>
-                    <Spacer type={'vertical'} size={20} />
-                    <UploadButton>Upload</UploadButton>
-                    <Spacer type={'vertical'} size={20} />
-                    <Row>
-                        <Input placeholder="Genre" value={genre} setValue={setGenre} />
-                        <Spacer type={'horizontal'} size={20} />
-                        <Input placeholder="Duration" value={duration} setValue={setDuration} />
-                    </Row>
+                    <Gallery
+                        type={'tile'}
+                        color={theme.secondary}
+                        gallery={gallery}
+                        openModal={openModal}
+                    />
+                    <Input placeholder="Genre" value={genre} setValue={setGenre} />
                     <Spacer type={'vertical'} size={30} />
                     <Row>
                         <Input placeholder="IMDB Rating" value={imdb} setValue={setImdb} />
@@ -107,12 +135,12 @@ const AddMoviePage = () => {
                         <Input placeholder="Rotten Tomatoes" value={rt} setValue={setRt} />
                     </Row>
                     <div style={{ flex: 1 }} />
-                    <FeaturedButton block onClick={addMovieHandler} loading={isLoading}>Add Movie</FeaturedButton>
+                    <FeaturedButton block onClick={addSeriesHandler} loading={isLoading}>Add Series</FeaturedButton>
                     <Spacer type={'vertical'} size={150} />
                 </CreateLayout.Info>
             </CreateLayout.Wrapper>
             <GalleryModal
-                label={'Add Movie Gallery'}
+                label={'Add Series Gallery'}
                 visible={showModal}
                 setVisible={setShowModal}
                 addGallery={addGalleryHandler}
@@ -121,6 +149,6 @@ const AddMoviePage = () => {
     );
 }
 
-export default AddMoviePage;
+export default AddSeriesPage;
 
 // https://media.w3.org/2010/05/sintel/trailer_hd.mp4

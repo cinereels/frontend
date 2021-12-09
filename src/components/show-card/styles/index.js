@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
+    z-index: 200;
     position: relative;
     height: 150px;
     width: 230px;
