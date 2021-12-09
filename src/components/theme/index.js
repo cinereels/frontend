@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Mask, Overlay, Info, Title, Description, Rating, Imdb, Rt, ButtonSection, Button1, Button2 } from './styles';
-import Player from 'react-background-video-player';
 
 const Theme = ({ title, description, image, imdb, rt, type = 'home' }) => {
     
